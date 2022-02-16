@@ -1,4 +1,5 @@
 
+var cat = document.getElementById("cat")
 var cash = 0;
 var addthing = document.getElementById("plusamt");
 const element = document.getElementById("money");
@@ -9,10 +10,18 @@ document.body.onkeyup = function(e){
     if(e.keyCode == 32){
         cash += 10 ;
         addthing.innerHTML = "+10";
-        
-    }
+        if (cash > 100) {
+          cat.classList.add("rainbow");
+          const myTimeout = setTimeout(stopRainbow , 5000);
+
+} else {
+  return true;
 }
+    }
+    }
 function nothingToSeeHere() {
-    cash +=1000;
     addthing.innerHTML = "nothing happened...";
+}
+function stopRainbow(){
+  cat.classList.remove("rainbow")
 }
