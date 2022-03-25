@@ -1,79 +1,126 @@
+/* Font imports */
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lemon&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Buenard&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
-#money {
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+h1 {
+  font-family: Comic Neue;
+}
+
+.upg {
+  font-family: "Poppins";
+  font-weight: bolder;
+  border: none;
+  background: #0000d6;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 5px 5px 5px 5px;
+}
+
+#cash {
+  background: url(https://github.com/zippyfish/cat_miner/raw/main/moneytexture.png);
   position: relative;
-  background:URL(https://github.com/zippyfish/cat_miner/raw/main/moneytexture.png); 
-  width:fit-content;
-  text-align:center;
+  width: fit-content;
+  text-align: center;
   overflow: hidden;
-  color:white;
-  text-overflow:ellipsis;
-  font-weight:bold;
-  font-family: Poppins; 
-  left:700px;
-
- }
- 
- #cat {
-   position:relative;
-   top:100px;
-   left: 500px;
-   font-size:100px;
- }
- #pickaxe2 {
-   position:relative;
-   right:30px;
-   width:50px;
-   height:50px;
-   animation-name: swing;
-   animation-duration: 1s;
-   animation-iteration-count:infinite;
- }
- @keyframes swing {
-   25% {
-     transform:rotate(0deg);
-   }
-   50% {
-     transform:rotate(90deg);
-   }
-   90% {
-     transform:rotate(0deg);
-   }
- }
- h1 {
-   text-align: center;
-   font-family: Inter;
- }
-
- #coal {
-   position: relative;
-   right:60px;
- }
- #plusamt {
-   text-align: center;
-   font-family: poppins;
- }
-.rainbow {
-
-
-   background: linear-gradient( 92deg, #95d7e3, #eb76ff );
-  background: -webkit-linear-gradient( 92deg, #95d7e3, #eb76ff );
-  background-size:600vw 600vw;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: textAnimate 5s linear infinite alternate;
+  color: white ;
+  text-overflow: ellipsis;
+  font-weight: bold;
+  font-family: Poppins;
+  left: 10px;
+  top: -50px;
 }
 
-@keyframes textAnimate {
-  from {
-    filter: hue-rotate(0deg);
-    background-position-x: 0%;
-    
+#pickaxe {
+  position: absolute;
+  top:200px;
+  left:18%;
+  height:120px;
+
+}
+@keyframes swing {
+  0% {
+    transform: rotate(70deg);
   }
-  to {
-    filter: hue-rotate(360deg);
-    background-position-x: 600vw;
-    
+  30% {
+  transform: rotate(0deg);
+  top:160px;
+  left:16%;
+  }
+  100% {
+    transform: rotate(70deg);
   }
 }
+#coal {
+  position: absolute;
+  left:260px;
+  top:200px;
+}
 
+
+.running {
+  animation-name:swing;
+  animation-duration:3.5s;
+  animation-iteration-count: infinite;
+  transform:rotate(70deg);
+}
+.not-running {
+  animation-name: none;
+}
+@keyframes none {
+  0% {
+    
+  }
+  100% {
+
+  }
+}
+#modal-background {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  opacity: .50;
+  -webkit-opacity: .5;
+  -moz-opacity: .5;
+  filter: alpha(opacity=50);
+  z-index: 1000;
+}
+
+#modal-content {
+  background-color: white;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  box-shadow: 0 0 20px 0 #222;
+  -webkit-box-shadow: 0 0 20px 0 #222;
+  -moz-box-shadow: 0 0 20px 0 #222;
+  display: none;
+  height: 240px;
+  left: 50%;
+  margin: -120px 0 0 -160px;
+  padding: 10px;
+  position: fixed;
+  top: 50%;
+  width: 320px;
+  z-index: 1000;
+  overflow-x: hidden;
+  overflow-y: auto;
+  text-align:justify;
+}
+
+#modal-background.active, #modal-content.active {
+  display: block;
+}
+#modal-close {
+  right:20px;
+}

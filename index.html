@@ -1,28 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="https://kit.fontawesome.com/243623dbf5.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cat Miner</title>
 </head>
 <body>
-    <h1 onclick="nothingToSeeHere()">
-Cat Miner
-</h1>
-<div id="money" class="money">
-$0
-</div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<h1>Cat Miner</h1>
+<button id="modal-launcher" class="upg" style="position:relative;left:80%;top:-60px;">Upgrade</button>
+<div id="cash"></div>
 <div id="plusamt"></div>
+<div ><img src="catminercat1-removebg-preview.png" style="  transform: scaleX(-1); height:300px;" id="cat">
+    <div id="coal"><img src="coal.png" height="160px"></div>
 
+    <img src="pickaxe.png" id="pickaxe" class="running"></div>
 <script src="script.js"></script>
-
-<div id="cat">
-<i class="fas fa-cat"></i>
-<span id="pickaxe"><img src="https://cdn.pixabay.com/photo/2017/08/23/10/46/pickaxe-2672330_1280.png" id="pickaxe2"></span>
-<span id="coal"><img src="https://github.com/zippyfish/cat_miner/raw/main/coal.png"></span>
+<div id="modal-background"></div>
+<div id="modal-content">
+    <span id="modal-close" style="cursor:pointer; position:absolute;">&times;</span>
+    <div>
+        
+        <p style="top:40%; position: absolute; left:30%">Copper Pickaxe<br><button class="buy" disabled style="position: absolute;right: 10px">OWNED</button></p>
+        <img src="pickaxe.png" id="pickaxe-inshop" style="position: absolute;top:40%; height:70px;"></div>
+        <p style="top:80%; position: absolute; left:30%">AI Pickaxe<br><button class="buy" id="aip-btn" style="position: absolute;right: 10px" onclick="checkForAIPickaxe()">BUY</button></p>
+        <img src="aipickaxe.png" id="pickaxe-inshop" style="position: absolute;top:80%; height:70px;">
+        <p style="top:120%; position: absolute; left:30%">Iron Pickaxe<br><button class="buy" id="irp-btn" style="position: absolute;right: 10px" onclick="checkForIronPickaxe()">BUY</button></p>
+        <img src="iron_pickaxe.png" id="pickaxe-inshop" style="position: absolute;top:120%; height:70px;"><p style="top:160%; position: absolute; left:30%">Gold Pickaxe<br><button class="buy" id="gold_pickaxe-btn" style="position: absolute;right: 10px" onclick="checkForGoldPickaxe()">BUY</button></p>
+        <img src="gold_pickaxe.png" id="pickaxe-inshop" style="position: absolute;top:160%; height:70px;">
+    </div>
 </div>
 </body>
 </html>
