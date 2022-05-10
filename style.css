@@ -24,7 +24,7 @@ h1 {
 }
 
 #cash {
-  background: url(https://github.com/zippyfish/cat_miner/raw/main/moneytexture.png);
+  background: url(./assets/moneytexture.png);
   position: relative;
   width: fit-content;
   text-align: center;
