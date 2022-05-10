@@ -103,3 +103,6 @@ function GP_Interval(){
   clearInterval(window.int1q); 
   var g = setInterval(function() {money += 25000; plusamt.innerText = "+25,000";setTimeout(function(){plusamt.innerHTML = "&nbsp;";},800);}, 1000)
 }
+if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+ alert("you are using mobile.  I plan to support mobile in the close future, but as of right now, the main game depends on the spacebar. ")
+}
