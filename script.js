@@ -4,9 +4,12 @@ var cat = $("#cat");
 var pickaxe = document.getElementById("pickaxe");
 var aipickaxe = "notbought";
 var money = 0;
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 var aipButton = document.getElementById("aip-btn");
 var zo = setInterval(function() {money += 5; plusamt.innerText = "+5";setTimeout(function(){plusamt.innerHTML = "&nbsp;";},800);}, 1000)
-var z = setInterval(function() {elem.innerHTML = "$" + money;}, 99);
+var z = setInterval(function() {elem.innerHTML = "$" + numberWithCommas(money)}, 99);
 document.body.onkeyup = function(e) {
   if (e.keyCode == 32) {
       money += 10;
