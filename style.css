@@ -1,14 +1,14 @@
 /* Font imports */
-@import url('https://fonts.googleapis.com/css2?family=Comic+Neue&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lemon&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Buenard&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz@8..144&display=swap');
 h1 {
-  font-family: Comic Neue;
+  font-family: Ubuntu;
 }
-
+body {
+  font-family:ubuntu;
+}
 .upg {
   font-family: "Poppins";
   font-weight: bolder;
@@ -47,17 +47,33 @@ h1 {
 @keyframes swing {
   0% {
     transform: rotate(70deg);
-    left:16%;
+    left:14%;
     top:210px;
   }
-  30% {
+  20% {
   transform: rotate(0deg);
   top:150px;
-  left:15%;
+  left:14%;
+  }
+  40% {
+  transform: rotate(70deg);
+  top:210px;
+  left:14%;
+  }
+  60% {
+    transform: rotate(0deg);
+    top:150px;
+    left:14%;
+  }
+  80% {
+    transform: rotate(35deg);
+    top:190px;
+    left:14%;
   }
   100% {
     transform: rotate(70deg);
-    left:16%;
+    left:14%;
+    top:220px;
   }
 }
 #ore {
@@ -69,7 +85,7 @@ h1 {
 
 .running {
   animation-name:swing;
-  animation-duration:3.5s;
+  animation-duration:5s;
   animation-iteration-count: infinite;
   transform:rotate(70deg);
 }
@@ -100,6 +116,7 @@ h1 {
 }
 
 #modal-content {
+  font-family:"Roboto Flex";
   background-color: white;
   border-radius: 10px;
   -webkit-border-radius: 10px;
@@ -108,13 +125,13 @@ h1 {
   -webkit-box-shadow: 0 0 20px 0 #222;
   -moz-box-shadow: 0 0 20px 0 #222;
   display: none;
-  height: 240px;
+  height: 500px;
   left: 50%;
   margin: -120px 0 0 -160px;
   padding: 10px;
   position: fixed;
-  top: 50%;
-  width: 320px;
+  top: 30%;
+  width: 800px;
   z-index: 1000;
   overflow-x: hidden;
   overflow-y: auto;
