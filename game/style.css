@@ -2,6 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo&display=swap');
+
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz@8..144&display=swap');
 h1 {
   font-family: Ubuntu;
@@ -32,7 +34,7 @@ body {
   color: black ;
   text-overflow: ellipsis;
   font-weight: bold;
-  font-family: Poppins;
+  font-family: Archivo;
   left: 10px;
   top: 90px;
 }
@@ -122,10 +124,18 @@ body {
   overflow-x: hidden;
   overflow-y: auto;
   text-align:justify;
+  -webkit-animation-name: animate__lightSpeedInRight;
+  -webkit-animation-duration: 0.4s;
+  animation-name: lightSpeedInRight;
+  animation-duration: 0.4s
 }
 
 #ugp1-background.active, #ugp1-content.active {
   display: block;
+}
+#up1-background.active, #up1-content.active {
+  display: block;
+
 }
 #ugp1-close {
   right:20px;
@@ -140,7 +150,7 @@ body {
 #ap #irp #gp #bgp {
   display:inline;
 }
-#up-background {
+#up1-background {
   display: none;
   position: fixed;
   top: 0;
@@ -155,7 +165,7 @@ body {
   z-index: 1000;
 }
 
-#up-content {
+#up1-content {
   font-family:"Roboto Flex";
   background-color: white;
   border-radius: 10px;
@@ -176,16 +186,37 @@ body {
   overflow-x: hidden;
   overflow-y: auto;
   text-align:justify;
+  -webkit-animation-name: flipInY;
+  -webkit-animation-duration: 0.4s;
+  animation-name: flipInY;
+  animation-duration: 0.4s
 }
 
 .active {
   display: block;
 }
-#up-close {
+#up1-close {
   right:20px;
 }
 #plusamt {
   top:250px;
   position: absolute;
   left:34%;
+}
+@keyframes animatetop {
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
+}
+
+
+.cave {
+  background-image: url(./assets/cavebg.png);
+  background-size: 1000px;
+}
+.paris {
+  color:black;
+}
+#update {
+  color:white;
+    font-family:Archivo;
 }
