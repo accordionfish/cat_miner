@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
     <script src="https://cdn.jsdelivr.net/npm/mousetrap@1.6.5/mousetrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
     <link rel="stylesheet" href="https://fonts.sandbox.google.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
@@ -13,8 +17,9 @@
     <title>Cat Miner</title>
 </head>
 <body>
-
-<h1>Cat Miner</h1>
+<div id="up1-background"></div>
+<div id="up1-content">New pick availible yey<div id="up1-close">&times;</div></div>
+<h1 id="title">Cat Miner</h1>
 <button id="ugp1-launcher" class="upg" style="position:fixed;left:80%;top:10px;font-family:ubuntu;font-weight:bolder">Pickaxe Shop</button>
 <div id="cash">loading...</div>
 <div id="plusamt">loading..</div>
@@ -41,7 +46,7 @@
 <button id="settingsbtn" onclick="showSettings()"><span class="material-symbols-outlined">
     settings
     </span></button>
-    <span style="bottom:0;left:0;position: absolute;">Cat Miner 0.2.7 (wow an update)</span>
+    <span style="bottom:0;left:0;position: absolute;" id="update">Cat Miner 0.2.8 (wow the game looks better)</span>
 </body>
 <script src="script.js"></script>
 
