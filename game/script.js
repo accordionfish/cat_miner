@@ -15,8 +15,11 @@ var ms2 = new Audio("./sounds/mine2.wav");
 var plusamt = document.getElementById("plusamt");
 var elem = document.getElementById("cash");
 var cat = $("#cat");
+var ore = document.getElementById("ore");
+var cmtitle= document.getElementById("title")
 var pickaxe = document.getElementById("pickaxe");
 var aipickaxe = "notbought";  
+var upcontent = document.getElementById("up1-content")
 if(Cookies.get("money") !== "NaN"){window.money = parseInt(Cookies.get("money"));} else {window.money=0;}
 
 /*
@@ -43,7 +46,7 @@ function numberWithCommas(x) {
 }
 var aipButton = document.getElementById("aip-btn");
 var zo = setInterval(function() {money += 5; plusamt.innerHTML = "+<img src='./assets/catcoin1.png' height='15px'>5";setTimeout(function(){plusamt.innerHTML = "&nbsp;";},800);}, 1000)
-var z = setInterval(function() {elem.innerHTML = "<img src='./assets/catcoin1.png' height='15px'>" + numberWithCommas(money); Cookies.set("money",money);upc();if(isNaN(money)){window.money=0}else{console.log("savedata found :>")}}, 99);
+var z = setInterval(function() {elem.innerHTML = "<img src='./assets/catcoin1.png' height='15px'>" + numberWithCommas(money);bgc(); Cookies.set("money",money);upc();if(isNaN(money)){window.money=0}else{console.log("savedata found :>")}}, 99);
 if(Cookies.get("activepick")!==["gold","baguette","iron"]){
   Mousetrap.bind('space', function() { 
       money += 10;
@@ -52,7 +55,7 @@ if(Cookies.get("activepick")!==["gold","baguette","iron"]){
         pickaxe.offsetHeight; /* trigger reflow */
         pickaxe.style.animation = null; 
         ms1.play();
-  });
+  },'keyup');
 } else {
   console.log("pickaxe is not copper")
 }
@@ -65,6 +68,22 @@ $(function(){
       $("#ugp1-content, #ugp1-background").toggleClass("active");
   });
 });
+$(function(){
+  $("#up1-background, #up1-close").click(function() {
+      $("#up1-content, #up1-background").toggleClass("active");
+  });
+});
+function bgc() {
+  if(Cookies.get("travelTicket") !=="1"){
+    document.body.classList.add("cave");
+    elem.style="color:white;" 
+    cmtitle.style="color:white;" 
+    plusamt.style="color:white;" 
+
+  } else {
+    document.body.classList.toggle("paris");
+  }
+}
 function upc(){
   if(money > 1000){
     irp.style.display = "inline";
@@ -72,6 +91,11 @@ function upc(){
     irpbtn.style.display="inline";
    } else {
     return false
+  }
+  if(money > 1005 && Cookies.get("modal1alrshown") != "yep"){
+    upcontent.innerHTML = "<div id='up1-close'>To exit, click on cat</div><h1 style='text-align:center;'>New Pickaxe Availible!</h1><img src='./assets/iron_pickaxe.png' height='120px'>Iron Pickaxe"
+    $("#up1-content, #up1-background").toggleClass("active");
+    Cookies.set("modal1alrshown","yep");
   }
   if(money > 1000000){
     gp.style.display = "inline";
@@ -81,12 +105,24 @@ function upc(){
   } else {
     return false;
   }
+  if(money > 1000005 && Cookies.get("modal2alrshown") != "yep"){
+    upcontent.innerHTML = "<div id='up1-close'>To exit, click on cat</div><h1 style='text-align:center;'>New Pickaxe Availible!</h1><img src='./assets/gold_pickaxe.png' height='120px'>Gold Pickaxe"
+    $("#up1-content, #up1-background").toggleClass("active");
+    Cookies.set("modal2alrshown","yep");
+  }
   if(money > 5000000){
     bgep.style.display = "inline";
     bgptxt.style.display = "inline";
     bgpbtn.style.display="inline";
-    document.getElementById("editthis").innerHTML = "New Pickaxe Available! <br>Gold Pickaxe";
-    document.getElementById("up").classList.toggle("active");
+  } else {
+    return false;
+  }
+  if(money > 5000005 && Cookies.get("modal3alrshown") != "yep"){
+    upcontent.innerHTML = "<div id='up1-close'>To exit, click on cat</div><h1 style='text-align:center;'>New Pickaxe Availible!</h1><img src='./assets/baguettepick.png' height='120px'>Baguette Pickaxe<br>And you got a <br><h3>Travel Ticket<img src='./assets/travelticket.png' height='20px'></h3>"
+    $("#up1-content, #up1-background").toggleClass("active");
+    Cookies.set("modal3alrshown","yep");
+    Cookies.set("travelTicket","1");
+    
   }
   if(money > 100000000){
     return true;
@@ -115,7 +151,7 @@ function AIInterval(){
         pickaxe.offsetHeight; /* trigger reanimate */
         pickaxe.style.animation = null; 
         pickaxe.style.animationDuration = "0.1s";
-      })
+      },'keyup')
 }
 function checkForIronPickaxe(){
   // something smoething something something
@@ -155,7 +191,7 @@ function IP_Interval(){
         pickaxe.style.animation = null; 
         ms2.play();
 
-  });
+  },'keyup');
 }
 function checkForGoldPickaxe(){
   if(money > 1000000){
@@ -183,7 +219,7 @@ function GP_Interval(){
         ms1.play();
         localStorage.setItem("money",money)
     
-  });
+  },'keyup');
 }
 function cfbgp(){
   if(window.money > 5000000){
@@ -217,7 +253,7 @@ function bgp(){
         pickaxe.offsetHeight; /* trigger reflow */
         pickaxe.style.animation = null; 
         ms1.play();
-});
+},'keyup');
 } 
 if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
  alert("you are using mobile.  As of right now, Cat Miner is in BETA. when the full game releases, there will be a mobile app.")
