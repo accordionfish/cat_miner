@@ -12,7 +12,7 @@
 <body>
     <h1>Cat Miner</h1>
     <button type="button" class="nes-btn is-primary" id="btn1" onclick="window.location.href='./game/'">Start Game</button>
-    <button type="button" class="nes-btn is-secondary" id="btn2" onclick="localStorage.clear('money')">Delete save</button>
+    <button type="button" class="nes-btn is-secondary" id="btn2" onclick="Cookies.remove('activepick');Cookies.remove('money');Cookies.remove('modal1alrshown');Cookies.remove('modal2alrshown');Cookies.remove('modal3alrshown');Cookies.remove('travelTicket')">Delete save</button>
     <div id="news"></div>
 </body>
 </html>
