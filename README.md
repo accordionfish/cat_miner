@@ -1,6 +1,17 @@
+# 0.3 RELEASED!
+## Changes:
+> - Added welcome screen that (kinda) works
+> - fixed UI of new pickaxe availible
+> - added new sounds
+> - added menu to quit to title screen and turn off music
+> - added debug menu (only shows fps for now)
+> - various UI changes
+## Notes:
+> - Paris background is not quite finished and has a placeholder(i'm looking at you matthew and thomas)
+> - until i have the beignet designed, the ore is still coal.
+> - i'm gonna add more music soon 
+> - jonathan mode coming soon as well(if you know you know)
 # Cat Miner
->Note:Cat miner is in _beta_ currently. When 1.0 comes out, cat miner will be fully released, with a custom domain (and ads to keep the domain running but they won't be intrusive)
-
 Ok, so for whoever doesn't know, cat miner started as just a sort of idle game that I made, and it was just a font awesome cat and a pickaxe mining air.
 ![image](https://github.com/zippyfish/assetsforsomething/raw/main/img129834.png)
 
