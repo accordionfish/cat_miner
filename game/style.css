@@ -43,29 +43,31 @@ body {
 
 #pickaxe {
   position: fixed;
-  top:150px;
+  top:140px;
   left:13%;
-  height:120px;
+  height:145px;
   transform:rotate(0deg);
+    image-rendering: pixelated;
 
 }
 @keyframes swing {
   0% {
     transform: rotate(70deg);
     left:15%;
-    top:220px;
+    top:210px;
   }
   100% {
     transform: rotate(0deg);
-    top:150px;
+    top:140px;
     left:13%;
     
   }
 }
 #ore {
   position: absolute;
-  left:260px;
-  top:200px;
+  left:240px;
+  top:225px;
+
 }
 
 
@@ -213,9 +215,8 @@ body {
 }
 .paris {
   color:black;
-  background-image:url(./assets/betabg.jpg);
-  background-size:1100px;
-  background-repeat:no-repeat;
+  background-image:url(./assets/parisbg.jpg);
+  background-size:1000px;
 }
 #update {
   color:white;

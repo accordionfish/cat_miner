@@ -37,27 +37,32 @@
 <br><br><br><br><br>
 <div><img src="./assets/cat1.png" style="  transform: scaleX(-1); height:300px;" id="cat"><div id="catcontainer"></div></div>
     <div><img src="./assets/coal1.png" height="160px" id="ore"></div>
-    <img src="./assets/pickaxe.png" id="pickaxe" class="running"></div>
+    <img src="./assets/rusty_pick.png" id="pickaxe" class="running"></div>
 <div id="ugp1-background"></div>
 <div id="ugp1-content">
+    <div><p style="top:10%; position: absolute; left:30%"><b>Rusty Pickaxe - Free</b><br>The first pickaxe Cat Miner ever discovered. He picked it up at a yard sale and it was marked 'free'. Whoever had this pickaxe before had it in bad shape.<br><button style="left:100;position: absolute;"class="buy" disabled>OWNED</button></p>
     <span id="ugp1-close" style="cursor:pointer; position:absolute;">&times;</span>
-    <div><p style="top:10%; position: absolute; left:30%"><b>Copper Pickaxe - Free</b><br>The first pickaxe Cat Miner made. He bought some copper and stuck it to a stick.<br><button style="left:100;position: absolute;"class="buy" disabled>OWNED</button></p>
-        <img src="./assets/pickaxe.png" id="pickaxe-inshop" style="position: absolute;top:10%; height:70px;"></div>
-        <p style="top:100%; position: absolute; left:30%;display:none"id="aptxt"><b> Auto Pickaxe - <img src="./assets/catcoin1.png" height="15px">100M</b><br>Makes 10 trillion catcoin per second. Legend says that cat miner didn't even make this pickaxe, but a mere robot did...<button class="buy" id="aip-btn" onclick="checkforPick(100000000,'AI_Interval')" style="right:0;position: absolute;" class="nes-btn">BUY</button></p>
-        <img src="./assets/aipickaxe.png" id="ap" style="position: absolute;top:100%; height:70px;display:none;">
-        <p style="top:25%; position: absolute; left:30%;display:none" id="irptxt"><b>Iron Pickaxe - <img src="./assets/catcoin1.png" height="15px">1,000</b><br>The second pickaxe that Cat Miner made. He was getting better at making pickaxes and even mined the iron himself.   
-        <button class="buy" id="irp-btn" style="position: absolute;right:0;display:none;" onclick="checkforPick(1000,'IP_Interval')">BUY </button></p>
-        <img src="./assets/iron_pickaxe.png" id="irp" style="position: absolute;top:25%; height:70px;display:none;">
-        <p style="top:40%; position: absolute; left:30%;display:none;"id="gptxt"><b>Gold Pickaxe - <img src="./assets/catcoin1.png" height="15px">1.0M</b><br>Makes 25k catcoin per second. Cat Miner was getting plenty of income at this point.<button style="position: absolute;right:0;"class="buy" id="gold_pickaxe-btn"onclick="checkforPick(1000000,'GP_Interval')">BUY</button></p>
-        <img src="./assets/gold_pickaxe.png" id="gp" style="position: absolute;top:40%; height:70px;display:none;">
-        <p style="top:80%; position: absolute; left:30%;display:none;"id="bgptxt"><b> Baguette Pickaxe - <img src="./assets/catcoin1.png" height="15px">5M</b><br>The superior Baguette Pickaxe was said to be imported straight from France. <br>This pickaxe gets you 50k catcoin per second. Just... don't eat it.<button class="buy" id="bgp-btn" onclick="checkforPick(5000000,'bgp')" style="left:100%;position: absolute;">BUY</button></p>
-        <img src="./assets/baguettepick.png" id="bgp" style="position: absolute;top:80%; height:70px;display:none;">
+        <img src="./assets/rusty_pick.png" id="pickaxe-inshop" style="  image-rendering: pixelated;position: absolute;top:10%; height:70px;"></div>
+        <p style="top:100%; position: absolute; left:30%; "id="aptxt" hidden><b> Auto Pickaxe - <img src="./assets/catcoin1.png" height="15px">100M</b><br>Makes 10 trillion catcoin per second. Legend says that cat miner didn't even make this pickaxe, but a mere robot did...<button class="buy" id="aip-btn" onclick="checkforPick(100000000,'AI_Interval')" style="right:0;position: absolute;" class="nes-btn">BUY</button></p>
+        <img src="./assets/hmmmmm.png" id="ap" style="  image-rendering: pixelated;position: absolute;top:100%; height:70px; ">
+        <p style="top:25%; position: absolute; left:30%; " id="irptxt"><b>???</b> - <img src="./assets/catcoin1.png" height="15px">1,000<br>You'll unlock this after mining for a while.       <br>
+        <button class="buy" id="irp-btn" style="position: absolute;right:1%; " onclick="checkforPick(1000,'IP_Interval')">BUY </button></p>
+        <img src="./assets/hmmmmm.png" id="irp" style="  image-rendering: pixelated;position: absolute;top:25%; height:70px;">
+        <p style="top:40%; position: absolute; left:30%;"id="gptxt"><b>??? - <img src="./assets/catcoin1.png" height="15px">1.0M</b><br>You'll unlock this after mining for a while.    <br><button style="position: absolute;right:0;"class="buy" id="gold_pickaxe-btn"onclick="checkforPick(1000000,'GP_Interval')">BUY</button></p>
+        <img src="./assets/hmmmmm.png" id="gp" style="  image-rendering: pixelated;position: absolute;top:40%; height:70px;">
+        <p style="top:80%; position: absolute; left:30%; "id="sptxt" ><b> ??? - <img src="./assets/catcoin1.png" height="15px">7M</b><br>hmm i wonder what this is..<br><button class="buy" id="steelpick-btn" onclick="checkforPick(7000000,'steelpick')" style="right:0;position: absolute;" class="nes-btn">BUY</button></p>
+        <img src="./assets/hmmmmm.png" id="sp" style="  image-rendering: pixelated;position: absolute;top:80%; height:70px; ">
+        
+        <p style="top:100%; position: absolute; left:30%;"id="bgptxt"><b> ??? - <img src="./assets/catcoin1.png" height="15px">20M</b><br>what a price difference! hmmm i wonder what it is..<br><button class="buy" id="pickpick-btn" onclick="checkforPick(10000000,'bgp')" style="right:0;position: absolute;">BUY</button></p>
+        <img src="./assets/hmmmmm.png" id="bgp" style="  image-rendering: pixelated;position: absolute;top:100%; height:70px; ">
+        <p style="top:60%; position: absolute; left:30%;"id="pickpicktxt"><b> ??? - <img src="./assets/catcoin1.png" height="15px">2.5M</b><br>I think you get the idea on how to obtain this.<br><button class="buy" id="bgp-btn" onclick="checkforPick(2500000,'pickpick')" style="left:100%;position: absolute;">BUY</button></p>
+        <img src="./assets/hmmmmm.png" id="pickpick" style="  image-rendering: pixelated;position: absolute;top:60%; height:70px;">
     </div>
 </div>
 <button id="settingsbtn" onclick="showSettings()"><span class="material-symbols-outlined">
     settings
     </span></button>
-    <span style="bottom:0;left:0;position: absolute;" id="update">Cat Miner 0.3!!!!!!!!!! (i still need to work on this lol)😺🎉😺🎉😺🎉😺🎉</span>
+    <span style="bottom:0;left:0;position: absolute;" id="update">Cat Miner 0.3.1(the kinda buggy update)</span>
 <script src="script.js"></script>
 
 </body>
