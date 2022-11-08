@@ -1,4 +1,10 @@
-# 0.3 RELEASED!
+# IMPORTANT ANNOUNCEMENT!!!
+## Slowed development(like really slow)
+> I am taking a break from all cat miner development, and no more updates will happen for a while.
+## WHY?!?! WHY TALL KYLE WHY??
+> The reasoning is that.. I am not really happy with how cat miner's code is right now, and it is hard to add new features sometimes.
+> I want to take this time to get better at coding, and possibly rewrite all of the code. I still will keep the same logic, but I am not going to update for a while. 
+# 0.3.1 RELEASED!
 ## Changes:
 > - Changed the source images of all the pickaxes
 > - Added Jonathan mode, and the Steel Pickaxe, and the Pickaxe pickaxe.
