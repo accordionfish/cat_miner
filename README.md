@@ -1,9 +1,13 @@
 # Update on development
 ## no longer slow development, 0.4 is very very close to release.
 > 0.4 is coming soon to a website near you!
-## WHY?!?! WHY TALL KYLE WHY??
-> The reasoning is that.. I am not really happy with how cat miner's code is right now, and it is hard to add new features sometimes.
-> I want to take this time to get better at coding, and possibly rewrite all of the code. I still will keep the same logic, but I am not going to update for a while. 
+## oh cool so youre better at coding?
+>  yep, there will be minimal glitches(in 0.4) and NEW MUSIC!!! yey
+>  I finished a JS course; So I am very confident about 0.4.
+# 0.4 preview
+## secret features??
+>shhhhhh
+>here's a hint: **_borgir_** 
 # 0.3.1 RELEASED!
 ## Changes:
 > - Changed the source images of all the pickaxes
