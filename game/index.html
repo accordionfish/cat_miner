@@ -1,69 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/stats.js/7/Stats.min.js" integrity="sha512-ey3wf3z1WUgQ6/XU/lV1UVQkbCpWsyQANkBst88XXWHok9fXKp55G365lLhScYihGpkzhiZz75r+8isUSCKRIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
     <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
   />
-  <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon">
-    <script src="https://cdn.jsdelivr.net/npm/mousetrap@1.6.5/mousetrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
-    <link rel="stylesheet" href="https://fonts.sandbox.google.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+
+    <script src="https://unpkg.com/micromodal/dist/micromodal.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mousetrap/1.6.5/mousetrap.min.js" integrity="sha512-+Jg3Ynmj9hse704K48H6rBBI3jdNBjReRGBCxUWFfOz3yVurnJFWtAWssDAsGtzWYw89xFWPxShuj2T6E9EOpg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>Cat Miner</title>
 </head>
-<body>
-    <div id="welcome-bg"></div>
-    <div id="welcome"><div id="welcome-close"></div>
-    <div id="welcome-content"><h1 id="welcomeh1">Welcome to Cat Miner!</h1><img src="./assets/cm.gif"height="400px" id="cm"><button class="welcome-btn" id="nextbtn" onclick="e1()">NEXT</button><div id="tutorial" hidden></div></div>
+<body ondrag="(e) => {e.preventDefault()}">
+    <div id="loader"><img src="./assets/pick_icon.png" id="spin"></div>
+    <div id="dialog"><div id="person">Mr. Loaf</div><div id="line">Welcome to my shop! I sell pickaxes.</div><div id="action"></div><div id="options"> <span id="ac1">yes</span><br><span id="ac2">no</span></div></div>
+    <noscript>This game relies on Javascript to run. turn it on now!!!!1!!!!! pls do it or game will be useless and my life's work will be wiufgweigfewubeyrwbey</noscript>
+    <img src="./assets/cmlogo.png" alt="logo" id="logo">
+    <div id="catcoins"></div>
+    <div id="mine-container">
+        <img id="cat" src="./assets/cat1.png"/>
+        <img src="" id="pick">
+        <img src="" alt="" id="ore">
     </div>
-<div id="cutscene-bg"></div>
-    <div id="cutscene">  
+    <div id="ore"><img src=""  id="ore-src"></div>
+    <button id="travel"><img src="./assets/travelicon.png" height="25px" style="vertical-align:middle;"> Travel</button>
+    <div id="trvl-menu">
+        <img id="airport" src="" hidden>
+        <div id="e">
+        <img id="pilot">
+        </div>
+        <div id="place"></div>
+        <button id="minigame"><img id="mini_img" class="mini-img"><br>Play Minigame</button>
+        <button id="visit"><img height="100vh" src="./assets/airport_1.JPEG"><br>Visit Airport</button>
+        <div id="place-img"></div>
+        <button id="exit" onclick="hide('trvl-menu')">&times;</button>
+            
     </div>
-<div id="up1-background"></div>
-<div id="up1-content"><div id="up1-close">&times;</div><div id="up1-editthis"></div></div>
-<h1 id="title"><img src="./assets/cmlogo.png" height="50px"></h1>
-<button onclick="menu()" class="title"><span class="material-symbols-outlined">menu</span></button>
-<button id="ugp1-launcher" class="upg" style="position:fixed;left:80%;top:10px;font-family:ubuntu;font-weight:bolder">Pickaxe Shop</button>
-<div id="cash">loading...</div>
-<div id="plusamt" hidden>loading..</div>
-<br><br><br><br><br>
-<div><img src="./assets/cat1.png" style="  transform: scaleX(-1); height:300px;" id="cat"><div id="catcontainer"></div></div>
-    <div><img src="./assets/coal1.png" height="160px" id="ore"></div>
-    <img src="./assets/rusty_pick.png" id="pickaxe" class="running"></div>
-<div id="ugp1-background"></div>
-<div id="ugp1-content">
-    <div><p style="top:10%; position: absolute; left:30%"><b>Rusty Pickaxe - Free</b><br>The first pickaxe Cat Miner ever discovered. He picked it up at a yard sale and it was marked 'free'. Whoever had this pickaxe before had it in bad shape.<br><button style="left:100;position: absolute;"class="buy" disabled>OWNED</button></p>
-    <span id="ugp1-close" style="cursor:pointer; position:absolute;">&times;</span>
-        <img src="./assets/rusty_pick.png" id="pickaxe-inshop" style="  image-rendering: pixelated;position: absolute;top:10%; height:70px;"></div>
-        <p style="top:100%; position: absolute; left:30%; "id="aptxt" hidden><b> Auto Pickaxe - <img src="./assets/catcoin1.png" height="15px">100M</b><br>Makes 10 trillion catcoin per second. Legend says that cat miner didn't even make this pickaxe, but a mere robot did...<button class="buy" id="aip-btn" onclick="checkforPick(100000000,'AI_Interval')" style="right:0;position: absolute;" class="nes-btn">BUY</button></p>
-        <img src="./assets/hmmmmm.png" id="ap" style="  image-rendering: pixelated;position: absolute;top:100%; height:70px; ">
-        <p style="top:25%; position: absolute; left:30%; " id="irptxt"><b>???</b> - <img src="./assets/catcoin1.png" height="15px">1,000<br>You'll unlock this after mining for a while.       <br>
-        <button class="buy" id="irp-btn" style="position: absolute;right:1%; " onclick="checkforPick(1000,'IP_Interval')">BUY </button></p>
-        <img src="./assets/hmmmmm.png" id="irp" style="  image-rendering: pixelated;position: absolute;top:25%; height:70px;">
-        <p style="top:40%; position: absolute; left:30%;"id="gptxt"><b>??? - <img src="./assets/catcoin1.png" height="15px">1.0M</b><br>You'll unlock this after mining for a while.    <br><button style="position: absolute;right:0;"class="buy" id="gold_pickaxe-btn"onclick="checkforPick(1000000,'GP_Interval')">BUY</button></p>
-        <img src="./assets/hmmmmm.png" id="gp" style="  image-rendering: pixelated;position: absolute;top:40%; height:70px;">
-        <p style="top:80%; position: absolute; left:30%; "id="sptxt" ><b> ??? - <img src="./assets/catcoin1.png" height="15px">7M</b><br>hmm i wonder what this is..<br><button class="buy" id="steelpick-btn" onclick="checkforPick(7000000,'steelpick')" style="right:0;position: absolute;" class="nes-btn">BUY</button></p>
-        <img src="./assets/hmmmmm.png" id="sp" style="  image-rendering: pixelated;position: absolute;top:80%; height:70px; ">
+    <button id="shop"><img src="./assets/pick_icon.png" height="20px" >&nbsp;&nbsp;Shop</button>
+    <div id="shop_ctr_ctr">
+    <div id="shop_ctr">
         
-        <p style="top:100%; position: absolute; left:30%;"id="bgptxt"><b> ??? - <img src="./assets/catcoin1.png" height="15px">20M</b><br>what a price difference! hmmm i wonder what it is..<br><button class="buy" id="pickpick-btn" onclick="checkforPick(10000000,'bgp')" style="right:0;position: absolute;">BUY</button></p>
-        <img src="./assets/hmmmmm.png" id="bgp" style="  image-rendering: pixelated;position: absolute;top:100%; height:70px; ">
-        <p style="top:60%; position: absolute; left:30%;"id="pickpicktxt"><b> ??? - <img src="./assets/catcoin1.png" height="15px">2.5M</b><br>I think you get the idea on how to obtain this.<br><button class="buy" id="bgp-btn" onclick="checkforPick(2500000,'pickpick')" style="left:100%;position: absolute;">BUY</button></p>
-        <img src="./assets/hmmmmm.png" id="pickpick" style="  image-rendering: pixelated;position: absolute;top:60%; height:70px;">
-    </div>
-</div>
-<button id="settingsbtn" onclick="showSettings()"><span class="material-symbols-outlined">
-    settings
-    </span></button>
-    <span style="bottom:0;left:0;position: absolute;" id="update">Cat Miner 0.3.9(new update coming very soon!!!)</span>
-<script src="script.js"></script>
+        <button onclick="document.querySelector('#shop_ctr').style.display='none';hide('dialog');hide('options')" style="border:none;color:black;background:none;font-size:50px;">&times;</button>
+        <img src="./assets/sign.png" alt="" id="shopsign">
+        <img src="./assets/mrloaf.png" alt="" id="mrloaf">
+        <div id="pickaxe-rack">
+        <button id="left" onclick="left()">◀</button>
+        <img id="pick1" onclick="viewPick(i + 1)" style="cursor:pointer;"/>
+        <img id="pick2" onclick="viewPick(i + 2)"/>
+        <img id="pick3" onclick="viewPick(i + 3)"/>
+        <img id="pick4" onclick="viewPick(i + 4)"/>
+        <button id="right" onclick="right()">▶</button>
 
+        <br>
+        <div id="shelf"></div>
+    </div>
+        <img src="" id="shop-pick">
+        <span id="pickname"></span>
+        <button id="buy" onclick='buyPick(pickaxes[pickaxes.indexOf(localStorage.getItem("activepick")) + 1])'>BUY</button>
+    </div>
+    </div>
+    <script src="./script.js"></script>
 </body>
 </html>

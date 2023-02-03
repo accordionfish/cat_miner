@@ -1,438 +1,406 @@
-//if the welcome window wasn't already clicked on and deleted, 
-if(localStorage.getItem("tutorial_modal") !== "yep" ){
-$("#welcome-content, #welcome-background").toggleClass("active");}
-//all the variables lol
-var pickaxes = ["gold","baguette","iron","pickaxepickaxe"];/* excluding the rusty pickaxe because work smarter not harder*/
-const cavemusic=new Audio("./sounds/catminer_caves.wav");
-cavemusic.volume=0.3
-const sp = document.getElementById("sp");
-const sptxt = document.getElementById("sptxt");
-const spbtn = document.getElementById("steelpick-btn");
+let loader = document.getElementById('loader');
+let i = 0;
 
-const musicbtn =  document.getElementById('musicbtn');  
-const gp = document.getElementById("gp");
-const gptxt = document.getElementById("gptxt");
-const irp = document.getElementById("irp");
-const irptxt = document.getElementById("irptxt");
-const aipbtn = document.getElementById("aip-btn");
-const gpbtn = document.getElementById("gold_pickaxe-btn");
-const irpbtn = document.getElementById("irp-btn");
-const bgpbtn = document.getElementById("bgp-btn");
-const aipButton = document.getElementById("aip-btn");
-const bgep = document.getElementById("bgp");
-const bgptxt = document.getElementById("bgptxt");
-const ap = document.getElementById("ap");
-const aptxt = document.getElementById("aptxt");
-const plusamt = document.getElementById("plusamt");
-const elem = document.getElementById("cash");
-const ore = document.getElementById("ore");
-const cmtitle= document.getElementById("title");
-const pickaxe = document.getElementById("pickaxe");
-const cctnr=document.getElementById("catcontainer");
-const upcontent = document.getElementById("up1-editthis")
-const cutscenething=document.getElementById("cutscene");
-const ms1 = new Audio("./sounds/mine1.wav");
-const ms2 = new Audio("./sounds/mine2.wav");
+window.onload = () => {
+    setTimeout(()=>{
+    loader.style.display='none';
+
+    },1900)
+}
+const pickaxes = ["rusty","iron","gold","pickaxe","steel","baguette","glitchy"];
+const places = ["cave","paris"/* there are plans to add more for sure */];
+const cats = ["original","butterscotch","hearts","sochi"];
+const ores = ["coal","beignet"/*  same thing here, just putting a placeholder */]
+const gems = [""];
+const pick_src = { 
+    'rusty': './assets/rusty_pick.png',
+    'iron': './assets/iron_pick.png',
+    'gold': './assets/gold_pick.png',
+    'pickaxe': './assets/pickaxe_pick.png',
+    'steel': './assets/steel_pick.png',
+    'baguette': './assets/baguette_pick.png',
+    'glitchy': './assets/aipickaxe.png'
+};
+const ore_src = {
+    "cave":"./assets/coal1.png",
+    "paris":"./assets/beignet.png"
+}
+const pick_prices = {
+    'iron': 500,
+    'gold': 500000,
+    'pickaxe': 2500000,
+    'steel':5000000,
+    'baguette':20000000,
+    'glitchy':2222225828528528
+};
+const ccperpick = {
+    'rusty':5,
+    'iron':10000,
+    'gold':50000,
+    'pickaxe':250000,
+    'steel':500000,
+    'baguette':500000,
+    'glitchy':5702671010111001
+}
+const dialog_lines = {
+    "Mr. Loaf": ["Welcome to my shop!","This is the "+pickaxes[pickaxes.indexOf(localStorage.getItem("activepick"))+    wow]+" Pickaxe.","Would you like to buy it?","Here you go, a new shiny pickaxe!", "Ok, have a good day!","It looks like you already have this pickaxe.","My shelf is full right now.", "It looks like you don't have enough catcoins.\n Thanks anyway!"],
+    "Pilot Bob": ["Welcome everyone to the When Cats Fly Airport!","Today, we have a flight to "+places[wow]+"!","It looks like you don't have a ticket. Would you like to buy one?","Thanks for your business!","Were you looking for a different flight? You can reuse old tickets.","Attention! We are now boarding!","Alright folks, enjoy your flight!", "Thanks for flying When Cats Fly Airlines!"]
+}
+const pick_places = {
+    "iron":"cave",
+    "gold":"cave",
+    "pickaxe":"cave",
+    "steel":"cave",
+    "baguette":"paris",
+    "glitchy": "cativerse"
+}
+const place_img = {
+    "cave":"./assets/cavebg.png",
+    "paris":"./assets/parisbg.png"
+}
+const minig_img = {
+    "cave":"./assets/hmmmmm.png",
+    "paris":"./assets/hmmmmm.png"
+}
+const ticket_prc = {
+    "paris":10000000
+}
+var wow;
+const dialog_el = document.getElementById("line")
+const cc_el = document.getElementById("catcoins");
+const pick_el = document.getElementById("pick");
+const shop_el = document.getElementById("shop");
+const shop_window = document.getElementById("shop_ctr");
+const shop_pick = document.getElementById("shop-pick");
+const buy_btn = document.getElementById("buy");
 const cat = document.getElementById("cat");
-const aipickaxe = "notbought";  
-const pickpicktext = document.getElementById("pickpicktxt");
-const pickaxepickaxe = document.getElementById("pickpick");
-const pickpickbtn = document.getElementById("pickpick-btn"); 
-const nextbtn = document.getElementById("nextbtn");
-//update the money to the amount that the variable 'money' is 
-var z = setInterval(function() {elem.innerHTML = "<img src='./assets/catcoin1.png' height='25px' style='vertical-align:middle;'>" + numeral(money).format('0.0a');;bgc(); Cookies.set("money",money);upc();if(isNaN(money)){window.money=0}else{donothingig()}}, 99);
+const place_el = document.getElementById("place");
+const dialog = document.getElementById("dialog");
+const dg_person = document.getElementById("person");
+const dg_action = document.querySelector("#action");
+const dg_options = document.querySelector("#options");
+const o1 = document.querySelector("#ac1");
+const o2 = document.querySelector("#ac2");
+const travel = document.querySelector("#travel");
+const travel_ctr = document.querySelector("#trvl-menu");
+const trvl_place = document.querySelector("#place");
+const trvl_mg = document.querySelector("#minigame");
+const trvl_mgimg = document.querySelector("#mini_img");
+const trvl_img = document.querySelector("#place-img");
+const trvl_visit = document.querySelector("#visit");
+const airport = document.querySelector("#airport");
+const pilotbob = document.querySelector("#pilot")
+const ore = document.querySelector("#ore")
+const pick1 = document.getElementById("pick1");const pick2=document.getElementById("pick2");const pick3 = document.getElementById("pick3");const pick4 = document.getElementById("pick4");
+var activePlace;
+var activePick;
+var activeCat;
+var catcoins;
+var boughtpicks = ["rusty"];
+var visitedplaces = []
+var ccpm; /*(catcoins per mine) */
+var as_place;
+//e
+console.log("are you a developer?? cause if u try to cheat then cat miner will be iuwheiunhfwfn.")
+//load the saved pickaxe
+if(localStorage.getItem("activepick") === 'undefined' | null){
+    //pretty self-explanatory
+    console.log("%c no saved pickaxe found,starting new game.","font-family:sans-serif");
+    var activePick = pickaxes[0];
+    localStorage.setItem("activepick",activePick)
+    var catcoins = 0;
+    var ccpm = 5;
+    visitedplaces[0]="cave";
+} else if(pickaxes.includes(localStorage.getItem("activepick"))){
+    //since the saved pickaxe is an item in that array, just set the active pickaxe to the saved value.
+    var activePick = localStorage.getItem("activepick");
+    var catcoins = parseInt(localStorage.getItem("catcoins"));
+    var activePlace=localStorage.getItem('activeplace');
+    var visitedplaces = JSON.parse(localStorage.getItem("visitedplaces"));
+    console.log("%c found a saved pickaxe.","color:green; font-family:sans-serif;")
 
-//if the cookie 'money' is a string, parse it into an integer and if it is the string 'NaN',  set the money to 0.
-if(Cookies.get("money") !== "NaN"){window.money = parseInt(Cookies.get("money"));} else {window.money=0;}
-//close the upgrade modal
-$(function(){
-    $("#up1-background, #up1-close").click(function() {
-        $("#up1-content, #up1-background").toggleClass("active");
-    });
-  });
-//remove right-click functionality
-document.oncontextmenu = function(e){
-   stopEvent(e);
-}
-//change the text when clicked on welcome modal
-function e1(){
-  document.getElementById('welcomeh1').innerHTML='Press SPACE to mine.'; 
-  document.getElementById('nextbtn').innerText='CLICK HERE TO TRY IT!'
-  nextbtn.onclick=e2;
-}
-//close the modal
-function e2(){
-  console.log('closing welcome modal..')
-  $("#welcome-content, #welcome-background").toggleClass("active");
-  localStorage.setItem("tutorial_modal","yep") 
-}
-//universal function to check for pickaxe. 
-function checkforPick(price,funcname){
-  if(money > price){
-    money -= price;
-    window[funcname]()
-  } else {
-    alert("You don't have enough catcoins.");
-  }
-}
-//stop the default event(right-click)
-function stopEvent(event){
-    if(event.preventDefault != undefined)
-     event.preventDefault();
-    if(event.stopPropagation != undefined)
-     event.stopPropagation();
-}
-//function to fill placeholders where i can't just put 'return false'
-function donothingig(){
-  return true;
-}
-function music2(){
-  musicbtn.onclick=`cavemusic.volume=0.3`;musicbtn.innerText=`bring da music back!`
-}
-//open the menu(music n stuff)
-function menu(){
-  upcontent.innerHTML="<button onclick='location.href=`../`'>Back to title screen</button><br><br> <button onclick='musicsettings()'>Music</button>"
-  $("#up1-content, #up1-background").toggleClass("active");
-}
-//open the music settings
-function musicsettings(){
-  upcontent.innerHTML="<h1>The Cat Miner Band<br><center><button id='musicbtn' onclick='cavemusic.volume=0;Cookies.set(`music_on`,`no`);music2();'>no music</button></center></h2>";
-}
-function music2(){
-  musicbtn.onclick=`cavemusic.volume=0.3`;musicbtn.innerText=`bring da music back!`
-}
+} else if(!localStorage.getItem("activepick")) {
+    console.log("%c no saved pickaxe found,starting new game.","font-family:sans-serif");
+    var activePick = pickaxes[0];
+    localStorage.setItem("activepick",activePick)
+    var catcoins = 0;
+    var ccpm = 5;
+    var activePlace = places[0];
+    visitedplaces[0]="cave";
 
-function music1(){
-  musicbtn.innerText="no music :("
-  cavemusic.volume=0.3;
-  musicbtn.onclick=`music2()`
+} else{
+    alert('error! please look in the log and report the bug on github!')
 }
-//a work in progress, but eventually this'll be used for debugging features.
-Mousetrap.bind('d e b u g', function() {
-  upcontent.innerHTML="<h1>Debug menu</h1><br>"
-  $("#up1-content, #up1-background").toggleClass("active");
-  function frames(){var stats=new Stats();document.body.appendChild(stats.domElement);requestAnimationFrame(function loop(){stats.update();requestAnimationFrame(loop)});}
-frames()
-});
-//jonathan mode(secret??)
-Mousetrap.bind('j o n a t h a n', function() {
-  Cookies.set("jonathanmode","on")
-  cat.src="./assets/kbc1.jpg";
-  cat.style="transform:translate"
-  ore.src=""
-  pickaxe.style.display="none"
-  Mousetrap.bind('space',function(){
-    cat.src="./assets/kbc2.jpg"
-  },'keydown');
-  Mousetrap.bind('space',function(){
-    money += 1984;
-    cat.src="./assets/kbc1.jpg"
-    plusamt.innerHTML="+<img src='./assets/catcoin1.png' height='15px'>1984";
-    $("#plusamt").show()
-        plusamt.style.animation = "GoUp 4s forwards linear"
-  },'keyup');
-});
-
-//if the most recent active pickaxe was not gold, baguette, or iron, then bind the spacebar to add 10 catcoin and reset the mining animation
-if(Cookies.get("activepick")!==pickaxes){
-  Mousetrap.bind('space', function() {     
-      money += 10;
-        plusamt.innerHTML="+<img src='./assets/catcoin1.png' height='15px'>10";
-        pickaxe.style.animation = 'none';
-        pickaxe.offsetHeight; /* trigger reflow */
-        pickaxe.style.animation = null; 
-        pickaxe.style.animationPlayState="running"
-        $("#plusamt").show()
-        plusamt.style.animation = "GoUp 4s forwards linear"
-        ms1.play();
-  },'keyup');
+//set the active catcoins per mine
+if(localStorage.getItem("ccpm")){
+    var ccpm = parseInt(localStorage.getItem("ccpm"));
 } else {
-  console.log("pickaxe is not copper")
+    var ccpm = 5;
 }
-if(Cookies.get("activepick") == "iron"){IP_Interval()}else{console.log("other pickaxe, doing other stuff")}
-if(Cookies.get("activepick")=="gold"){GP_Interval()} else { console.log("e")}
-if(Cookies.get("activepick")=="baguette"){bgp();} else { console.log("e")}
-if(Cookies.get("activepick")=="pickaxepickaxe"){pickpick();} else { console.log("e")}
+if(localStorage.getItem("boughtpicks")){
+    var boughtpicks = localStorage.getItem("boughtpicks")
+} else {
+    //just so that you can't really buy the first one yaknow
+    var boughtpicks = ["rusty"];
+}
+function hide(el){
+    document.getElementById(el).style.display="none";
+}
+//save the game every 0.1 seconds
+let saveInterval = setInterval(() => {
+    localStorage.setItem("activepick",activePick);
+    localStorage.setItem("activecat",activeCat);
+    localStorage.setItem("activeplace",activePlace);    
+    localStorage.setItem("catcoins",catcoins);
+    localStorage.setItem("ccpm",ccpm)
+    localStorage.setItem("boughtpicks",boughtpicks);
+    localStorage.setItem("visitedplaces",JSON.stringify(visitedplaces))
+    //set the catcoins element to be the amount of catcoins
+    cc_el.innerHTML = "<img src='./assets/catcoin1.png' height='30px' style='vertical-align:middle'>" + numeral(catcoins).format('0.0a');
+},100)
+//load the pickaxe
+pick_el.src = pick_src[activePick];
+//load the ore
+activePlace ? ore.src=ore_src[activePlace] : ore.src=ore_src["cave"];
+//load the background
+activePlace ? document.body.style.backgroundImage="url("+place_img[activePlace]+")" : document.body.style.backgroundImage="url("+place_img["cave"]+")";
+visitedplaces[places.indexOf(activePlace)] ? console.log('you are in the cave'): visitedplaces[places.indexOf(activePlace)] = places[activePlace]   
+visitedplaces[places.indexOf(activePlace)]=places[places.indexOf(activePlace)]
 
-//when the Pickaxe Shop Button is pressed, open the pickaxe shop
-$(function(){
-  $("#ugp1-launcher, #ugp1-background, #ugp1-close").click(function() {
-      $("#ugp1-content, #ugp1-background").toggleClass("active");
-  });
+//since the baguette's scaling is wonky, and da pickaxe is of large size, change the size to fit the other pickaxes.
+if(localStorage.getItem("activepick")==='baguette'){
+    pick_el.style.height="128px";
+    //just to clarify 
+    console.log('%c pickaxe is baguette!!! wow!!!',"color:orange; font-family:sans-serif;");
+} else {
+        console.log('wow')
+}
+//set the spacebar to mine 
+Mousetrap.bind('space',(e) =>{
+    if(!e.repeat){
+    catcoins +=ccpm;
+    pick_el.style.animation = 'none';
+    pick_el.offsetHeight;
+    pick_el.style.animation = null;
+    } else {
+        return; 
+    }
+},'keydown')
+
+function right() {
+    //if da thing that you know you shuffle through pickaxes and stuff is not more than the amount of array
+    if(!(i + 6 > Object.keys(pickaxes).length)  && visitedplaces.includes(pick_places[pickaxes[i+5]])){
+     /* 6 because ya know like the 0th index in an array and youre adding 4 to the i variable and stuff*/
+    i += 1;
+    pick1.src = pick_src[pickaxes[i + 1]];
+    pick2.src = pick_src[pickaxes[i + 2]];
+    pick3.src = pick_src[pickaxes[i + 3]];
+    pick4.src = pick_src[pickaxes[i + 4]];
+    } else {
+        dialog.style.display = 'flex';
+        dialog_el.innerText = dialog_lines["Mr. Loaf"][6]
+
+    }
+}
+function left() {
+    if(i - 1 !== -2){
+        i -=1;
+    pick1.src = pick_src[pickaxes[i + 1]];
+    pick2.src = pick_src[pickaxes[i + 2]];
+    pick3.src = pick_src[pickaxes[i + 3]];
+    pick4.src = pick_src[pickaxes[i + 4]];
+    } else {
+        dialog.style.display = 'flex';
+        dialog_el.innerText = dialog_lines["Mr. Loaf"][6]
+    }
+}
+function buyPick(pick, pick_id){
+    if(catcoins > pick_prices[pick] && !boughtpicks.includes(pick)){
+    //you have less moolah
+    catcoins -= pick_prices[pick];
+    //render the pickaxe
+    pick_el.src = pick_src[pick];
+    //set da active pickaxe to the right active pickaxe and ya dah ya dah ydaafuywgefhf
+    activePick=pick;
+    //the pickaxe wants to be stronger 
+    ccpm = ccperpick[pick];
+    //you have bought the pickaxe
+    boughtpicks[pick_id] = pick;
+    } else if(boughtpicks.includes(pick)){
+        //you have already bought this pick
+        buy_btn.disabled = true;
+    } else {
+        return 'not enough money'
+        }
+    //since baguette has wonky scaling set it to correct size :)
+    if(activePick ==='baguette'){
+        pick_el.style.height="128px";
+        //just to clarify 
+        console.log('%c pickaxe is baguette!!! wow!!!',"color:orange; font-family:sans-serif;");
+    }
+}
+function viewPick(e){
+    dg_options.style.display = 'none';
+    hide('shop-pick')
+    dialog_lines["Mr. Loaf"][1] = "This is the "+pickaxes[e]+" Pickaxe, which costs "+numeral(pick_prices[pickaxes[e]]).format("0.0.a")+" catcoins.";
+    shop_pick.style.display="inline";
+    dialog.style.display="flex";
+    shop_pick.src = pick_src[pickaxes[e]];
+    dialog_el.innerText = dialog_lines["Mr. Loaf"][1];
+    dg_action.onclick = () => {
+        dialog_el.innerText = dialog_lines["Mr. Loaf"][2];
+        dg_action.innerText = "▲";
+        dg_action.onclick = () => {
+        dg_options.style.display = 'block';
+    }}
+    o1.onclick = () => {
+        if(boughtpicks.includes(pickaxes[e])){
+            //you have already bought this pick
+        dg_action.innerText = "▶";
+        dg_action.onclick = () => {hide('dialog')}
+        hide('shop-pick');
+        hide('options');
+        dialog_el.innerText = dialog_lines["Mr. Loaf"][5];
+        console.log('works properly')
+        } else if(!(buyPick(pickaxes[e],e) === 'not enough money')){
+        buyPick(pickaxes[e],e);
+        hide('options');
+        console.log('bought pickaxe');
+        dg_action.innerText = "▶";
+        dg_action.onclick = () => {hide('dialog')}
+        dialog_el.innerText = dialog_lines["Mr. Loaf"][3]
+        } else {
+            hide('options')
+            dialog_el.innerText = dialog_lines["Mr. Loaf"][7];
+            dg_action.innerText = "▶";
+            dg_action.onclick = () => {hide('dialog')}
+            
+        }
+    }
+    o2.onclick = () => {
+        dialog_el.innerText = dialog_lines["Mr. Loaf"][4]
+        hide('options');
+        dg_action.innerText = "▶";
+        dg_action.onclick = () => {hide('dialog')}
+    }
+
+}
+//when the button for the shop is clicked open it
+shop_el.addEventListener('click', () => {
+    console.log("opening shop..");
+    shop_window.style.display="inline";
+    if(pickaxes[pickaxes.indexOf(localStorage.getItem("activepick")) !== undefined | null]){
+    pick1.src = pick_src[pickaxes[i + 1]];
+    pick2.src = pick_src[pickaxes[i + 2]];
+    pick3.src = pick_src[pickaxes[i + 3]];
+    pick4.src = pick_src[pickaxes[i + 4]];
+    } else {
+        console.error("pickaxe is not in range.");
+    }
+    setTimeout(() => {dialog.style.display="flex";},200);
+    dialog_el.innerText = dialog_lines["Mr. Loaf"][0];
+    dg_person.innerText = Object.keys(dialog_lines)[0];
+    dg_action.innerText = "▶";
+    dg_action.onclick = function(){hide('dialog')}
+
 });
-function bgc() {
-  if(Cookies.get("travelTicket") !=="1"){
-    document.body.classList.add("cave");
-    elem.style="color:white;" 
-    cmtitle.style="color:white;" 
-    plusamt.style="color:white;" 
-    if(Cookies.get('music_on')!=="no"){
-    cavemusic.play()
-    } else {
-      donothingig()
-    }
-  } if(Cookies.get("travelTicket")=="1") {
-    document.body.classList.add("paris");
-    cavemusic.pause();
-
-  }
-}
-function npamodal(yy,pickname){
-  var e = new Audio("./sounds/e.wav")
-  e.play()
-  upcontent.innerHTML = "<h1 style='text-align:center;'>New Pickaxe Availible!</h1><img src='"+yy+"' height='120px' style='margin-left: auto;margin-right: auto;display: block;'/><center><h2 style='text-align:center;bottom:0;'>"+pickname+"</h2></center>"
-  $("#up1-content, #up1-background").toggleClass("active");
-  
-}
-function e1247(functionname){
-    window[functionname]()
-}
-
-
-function displayupgrade(upgrade,id){
-  id.innerHTML=upgrade;
-}
-function upc(){
-  if(money > 1000){
-    irp.style.display = "inline";
-    irp.src="./assets/iron_pickaxe.png"
-    irptxt.style.display = "inline";
-        irptxt.innerHTML = `<b>Iron Pickaxe - <img src="./assets/catcoin1.png" height="15px">1,000</b><br>The second pickaxe that Cat Miner made. He was getting better at making pickaxes and even mined the iron himself.<button class="buy" id="irp-btn" style="position: absolute;right:0; " onclick="checkforPick(1000,'IP_Interval')">BUY </button></p>`
-    irpbtn.style.display="inline";
-   } else {
-donothingig()
-  }
-  if(money > 1005 && Cookies.get("modal1alrshown") != "yep"){
-    npamodal("./assets/iron_pickaxe.png","Iron Pickaxe")
-    Cookies.set("modal1alrshown","yep");
-  }
-  if(money > 1000000){
-    gp.style.display = "inline";
-    gptxt.style.display = "inline";
-    gpbtn.style.display="inline";
-    gp.src="./assets/gold_pickaxe.png";
-    gptxt.innerHTML=`Gold Pickaxe - <img src="./assets/catcoin1.png" height="15px">1.0M</b><br>Slightly better than the Iron Pickaxe.<br><button style="position: absolute;right:0;"class="buy" id="gold_pickaxe-btn"onclick="checkforPick(1000000,'GP_Interval')">BUY</button></p>`
-    Cookies.set("upg1", "yep")
-  } else {
-    donothingig()
-  }
-  if(money > 1000003 && Cookies.get("upg1") == "yep"){
-    displayupgrade(`Gold Pickaxe - <img src="./assets/catcoin1.png" height="15px">1.0M</b><br>Slightly better than the Iron Pickaxe.<br><button style="position: absolute;right:0;"class="buy" id="gold_pickaxe-btn"onclick="checkforPick(1000000,'GP_Interval')">BUY</button></p>`,gptxt)
-  } else {
-    donothingig()
-  }
-  if(money > 1000005 && Cookies.get("modal2alrshown") != "yep"){
-    npamodal("./assets/gold_pickaxe.png","Gold Pickaxe")
-    Cookies.set("modal2alrshown","yep");
-  } else {
-    donothingig()
-  }
-  if(money > 2500000){
-    pickpickbtn.style.display="inline";
-    pickaxepickaxe.style.display="inline";
-    pickaxepickaxe.src="./assets/pickaxe_pick.png";
-    pickpicktext.innerHTML=`<b> Pickaxe Pickaxe - <img src="./assets/catcoin1.png" height="15px">2.5M</b><br>When you see a tiny pickaxe, you can't help but tape it to your old one... <br>Right?<button class="buy" id="bgp-btn" onclick="checkforPick(2500000,'pickpick')" style="left:100%;position: absolute;">BUY</button>`
-  } else {
-    donothingig()
-  }
-  if(money > 2500005 && Cookies.get("modal3alrshown")!=="yep"){
-npamodal("./assets/pickaxe_pick.png","Pickaxe Pickaxe")
-Cookies.set("modal3alrshown","yep")
-  }  if(money > 7000000){
-    spbtn.style.display="inline";
-    sp.style.display="inline";
-    sp.src="./assets/steel_pick.png";
-    sptxt.innerHTML=`<b> Steel Pickaxe - <img src="./assets/catcoin1.png" height="15px">7M</b><br>This pickaxe is slightly better than the pickaxe pickaxe, just shinier. <br> wow<button class="buy" id="bgp-btn" onclick="checkforPick(2500000,'pickpick')" style="left:100%;position: absolute;">BUY</button>`
-  } else {
-    donothingig()
-  }
-  if(money > 7000005 && Cookies.get("modal4alrshown")!=="yep"){
-npamodal("./assets/steel_pick.png","Steel Pickaxe")
-Cookies.set("modal4alrshown","yep")
-  }
-  if(money > 20000000){
-    bgep.style.display = "inline";
-    bgptxt.style.display = "inline";
-    bgpbtn.style.display="inline";
-    bgptxt.innerHTML=`<p style="top:80%; position: absolute; left:30%;"id="bgptxt"><b> Baguette Pickaxe - <img src="./assets/catcoin1.png" height="15px">10M</b><br>The superior Baguette Pickaxe was said to be imported straight from France. <br>This pickaxe gets you 50k catcoin per second. Just... don't eat it.<button class="buy" id="pickpick-btn" onclick="checkforPick(10000000,'bgp')" style="left:100%;position: absolute;">BUY</button></p>
-    <img src="./assets/hmmmmm.png" id="bgp" style="  image-rendering: pixelated;position: absolute;top:80%; height:70px; ">`
-  } else {
-    donothingig()
-  }
-  if(money > 20000005 && Cookies.get("travelTicket")!== "1"){
-    upcontent.innerHTML = "<h1 style='text-align:center;'>New Pickaxe Availible!</h1><img src='./assets/baguettepick.png' height='120px'>Baguette Pickaxe<br>And you got a <br><h3>Travel Ticket<img src='./assets/travelticket.png' height='20px'></h3>"
-    $("#up1-content, #up1-background").toggleClass("active");
-    Cookies.set("travelTicket","1");
-  } else {
-    donothingig()
-  }
-}
-function checkForAIPickaxe(){
-  if(money > 100000000){
-    money -= 100000000;
-    pickaxe.src = "./assets/aipickaxe.png";
-    pickaxe.style.animationDuration = "0.1s";
-    AIInterval()
-    document.getElementById("aip-btn").disabled=true;
-    document.getElementById("aip-btn").innerText="OWNED";
-  } else {
-    alert("You don't have enough money.");
-  }
-}
-function AIInterval(){
-  document.getElementById("aip-btn").disabled=true;
-  document.getElementById("aip-btn").innerText="OWNED";
-  Mousetrap.bind('space', function() {  
-        money += 10000000000000;
-        plusamt.innerHTML = "+10 Trillion";
-        pickaxe.style.animation = 'none';
-        pickaxe.offsetHeight; /* trigger reanimate */
-        pickaxe.style.animation = null; 
-        pickaxe.style.animationDuration = "0.1s";
-      },'keyup')
-    }
-function IP_Interval(){
-  pickaxe.src = "./assets/iron_pickaxe.png";
-  pickaxe.style.animationDuration = "2.7s";
-  document.getElementById("irp-btn").disabled=true;
-  document.getElementById("irp-btn").innerText="OWNED";
-  pickaxe.src = "./assets/iron_pickaxe.png";
-  Cookies.set("activepick","iron")
-  Mousetrap.bind('space', function() {
-    if(Cookies.get("jonathanmode")!=="on"){
-        money += 8000;
-        plusamt.innerHTML = "+<img src='./assets/catcoin1.png' height='15px'>8,000";
-        pickaxe.style.animation = 'none';
-        pickaxe.offsetHeight; /* trigger reanimate */
-        pickaxe.style.animation = null; 
-        pickaxe.style.animationPlayState="running"
-        ms2.play();
-    } else {
-      money += 8000;
-      plusamt.innerHTML = "+<img src='./assets/catcoin1.png' height='15px'>8,000";
-    cat.src="./assets/kbc1.jpg"
-      
-    }
-  },'keyup');
-  Mousetrap.bind('space',function(){
-    if(Cookies.get("jonathanmode")!=="on"){
-donothingig()
-    } else {
-      cat.src="./assets/kbc2.jpg"
+if(localStorage.getItem("activepick") === 'glitchy') {
+    if(localStorage.getItem("hm") === 'no'){
+    var e1 = setInterval(() => {pick_el.style.animationPlayState = "running"},100)
+    var e2 = setInterval(() => {pick_el.style.animationPlayState = "paused";catcoins+=1412222228471248;},90)
+    var e3 = setInterval(() => {pick_el.style.top =  Math.floor(    Math.random() * 500)+"px";catcoins+=1412847222221248;},120)
+    var e4 = setInterval(() => {pick_el.style.left = Math.floor(Math.random() * 1000 - 220)+"px"},110);
+    } else if(prompt("if you are prone to seizures, then type 'yes'. otherwise , enjoy the glitchyness.") !== 'yes' | 'Yes' | 'yEs' | 'YeS' | 'yES' | 'YES'){
+        var e1 = setInterval(() => {pick_el.style.animationPlayState = "running"},100)
+        var e2 = setInterval(() => {pick_el.style.animationPlayState = "paused";catcoins+=1412222228471248;},90)
+        var e3 = setInterval(() => {pick_el.style.top =  Math.floor(220 - Math.random() * 500)+"px";catcoins+=1412847222221248;},120)
+        var e4 = setInterval(() => {pick_el.style.left =  Math.floor(Math.random() * 1000 -220)+"px"},110);
+    localStorage.setItem("hm",'no')
 
     }
-  },'keydown')
-}
-function checkForGoldPickaxe(){
-  if(money > 1000000){
-    money -= 1000000;
+  else {
+    clearInterval(e1)
+    clearInterval(e2)
+    clearInterval(e3)
+    clearInterval(e4)
 
-    GP_Interval();
-  } else {
-    alert("You don't have enough money.");
-  }
+    var activePick = 'glitchy';
+    pick_el.src = pick_src[activePick]
+    localStorage.setItem("hm","yes")
 }
-function GP_Interval(){
-  pickaxe.src = "./assets/gold_pickaxe.png";
-  pickaxe.style.animationDuration = "2.7s";
-  document.getElementById("gold_pickaxe-btn").disabled=true;
-  document.getElementById("gold_pickaxe-btn").innerText="OWNED";
-  document.getElementById("gold_pickaxe-btn").innerText="OWNED";
-  document.getElementById("irp-btn").disabled=true;
-  document.getElementById("irp-btn").innerText="OWNED";
-  Cookies.set("activepick","gold");
-    Mousetrap.bind('space', function(){
-        money += 15000;
-        plusamt.innerHTML = "+<img src='./assets/catcoin1.png' height='15px'>15,000";
-        pickaxe.style.animation = 'none';
-        pickaxe.offsetHeight; /* trigger reflow */
-        pickaxe.style.animation = null; 
-        pickaxe.style.animationPlayState="running"  
-        ms1.play();
-        localStorage.setItem("money",money)
+} else {
+    console.log("pickaxe is not glitched")
+}
+
+travel.addEventListener("click",() => {
+    travel_ctr.style.display = "block";
+    trvl_place.innerText = activePlace[0].toUpperCase() + activePlace.slice(1);
+    trvl_mg.value = activePlace;
+    trvl_mgimg.src = minig_img[places[places.indexOf(activePlace)]];
+    trvl_img.style.background = "url("+place_img[activePlace]+")";
+    trvl_img.style.backgroundRepeat = "repeat";
+    trvl_img.style.backgroundSize = "1000px 800px";
     
-  },'keyup');
+})
+trvl_visit.addEventListener("click",() => {
+    airport.style.display="block";
+    airport.src='./assets/airport.jpg';
+    pilotbob.style.display="block";
+    pilotbob.src = "./assets/pilotbob-1.png"
+    airport.hidden=false;
+    if(window.innerHeight!==window.screen.height){
+        pilotbob.style.top="30%"
+    }
+    setTimeout(() => {var dng = new Audio("./assets/ding.mp3");dng.volume=0.25;dng.play();
+    dialog.style.display="flex";
+    dialog_el.innerText = dialog_lines["Pilot Bob"][0];
+    dg_person.innerText = "Pilot Bob";
+    dg_action.innerText="▶";
+    dialog_lines["Pilot Bob"][1] = "Today, we have a flight to "+places[places.indexOf(localStorage.getItem("activeplace"))+1].charAt(0).toUpperCase()+places[places.indexOf(localStorage.getItem("activeplace"))+1].slice(1)+"!";
+    dg_action.onclick=() => {
+        if(localStorage.getItem("visitedplaces").includes(places[0])){
+        dialog_el.innerText=dialog_lines["Pilot Bob"][1];
+        dg_action.onclick=() =>{
+        dialog_el.innerText=dialog_lines["Pilot Bob"][2];
+        dg_options.style.display="block";
+        dg_action.innerText = "▲";
+        o1.onclick=()=>{
+            if(catcoins >= ticket_prc[places[places.indexOf(activePlace)+1]]){
+            dialog_el.innerText=dialog_lines["Pilot Bob"][3];
+            hide("options");
+            dg_action.onclick = () => {
+                dng.play()
+                dialog_el.innerText=dialog_lines["Pilot Bob"][5];
+                catcoins-=ticket_prc[places[places.indexOf(activePlace)+1]]
+                dg_action.innerText = "▶";
+                dg_action.onclick=()=>{var activePlace=places[places.indexOf(activePlace)+1];visitedplaces[places.indexOf(activePlace)]=places[places.indexOf(activePlace)];clearInterval(saveInterval);localStorage.setItem("activeplace",places[places.indexOf(activePlace)+1]);location.reload()}
+                
+            } 
+
+        } else if(catcoins!==ticket_prc[places[places.indexOf(activePlace)+1]] | catcoins<ticket_prc[places[places.indexOf(activePlace)+1]]){
+            console.log(ticket_prc[places[places.indexOf(activePlace)+1]]+" "+catcoins)
+            hide("options");
+            dialog_el.innerText="Sorry, but you can't buy a ticket with "+numeral(catcoins).format("0.0a")+" catcoins."
+            dg_action.onclick = () => {
+                dialog_el.innerText = "See you soon!";
+                dg_action.onclick=()=>{hide("dialog");hide("airport");hide("trvl-menu");}
+            }
+        }
+        }
+           o2.onclick=()=>{
+            dialog_el.innerText= "Alright, see you soon!";
+            hide("options")
+            dg_action.onclick=()=>{hide("airport");hide("dialog");hide("pilot");hide("options")}
+            }
+    }}}},1500);
+    }
+)
+function eatborgir(){
+    console.log("you ate borgir. nothing happened.")
 }
-function pickpick() {
-  document.getElementById("pickpick-btn").disabled=true;
-  document.getElementById("pickpick-btn").innerText="OWNED";
-  //do the same thing with the other buttons that are to buy stuff and for the buttons that are (probably) bought
-  gpbtn.innerText="OWNED";
-  gpbtn.disabled=true;
-  document.getElementById("irp-btn").disabled=true;
-  document.getElementById("irp-btn").innerText="OWNED";
-  //set the pickaxe's src image to the baguette
-  pickaxe.src = "./assets/pickaxe_pick.png";
-  pickaxe.style="height:125px"
-  pickaxe.style.animationDuration = "2.7s";
-  Cookies.set("activepick","pickpick")
-  //clear the interval, idk what the interval is for rn 
-  clearInterval(window.g); 
-  ore.innerHTML="<img src='./assets/coal1.png' height='160px'>";
-  Mousetrap.bind('space', function(){
-    money += 40000;
-    
-    plusamt.innerHTML = "+<img src='./assets/catcoin1.png' height='15px'>80k";
-    pickaxe.style.animation = 'none';
-    pickaxe.offsetHeight; /* trigger reflow */
-    pickaxe.style.animation = null; 
-    pickaxe.style.animationPlayState="running"
-    ms1.play();
-},'keyup');
-}
-function bgp(){
-  //Disable and set the text to "OWNED" on the "buy baguette pick" button
-  document.getElementById("bgp-btn").disabled=true;
-  document.getElementById("bgp-btn").innerText="OWNED";
-  //do the same thing with the other buttons that are to buy stuff and for the buttons that are (probably) bought
-  gpbtn.innerText="OWNED";
-  gpbtn.disabled=true;
-  document.getElementById("irp-btn").disabled=true;
-  document.getElementById("irp-btn").innerText="OWNED";
-  //set the pickaxe's src image to the baguette
-  pickaxe.src = "./assets/baguettepick.png";
-  pickaxe.style="height:125px"
-  pickaxe.style.animationDuration = "2.7s";
-  Cookies.set("activepick","pickaxe")
-  //clear the interval, idk what the interval is for rn 
-  clearInterval(window.g); 
-  ore.innerHTML="<img src='./assets/coal1.png' height='160px'>";
-  Mousetrap.bind('space', function(){
-        money += 80000;
-        plusamt.innerHTML = "+<img src='./assets/catcoin1.png' height='15px'>80k";
-        pickaxe.style.animation = 'none';
-        pickaxe.offsetHeight; /* trigger reflow */
-        pickaxe.style.animation = null; 
-        pickaxe.style.animationPlayState="running"
-        ms1.play();
-},'keyup');
-} 
-function steelpick(){
-  document.getElementById("bgp-btn").disabled=true;
-  document.getElementById("bgp-btn").innerText="OWNED";
-  //do the same thing with the other buttons that are to buy stuff and for the buttons that are (probably) bought
-  gpbtn.innerText="OWNED";
-  gpbtn.disabled=true;
-  document.getElementById("irp-btn").disabled=true;
-  document.getElementById("irp-btn").innerText="OWNED";
-  //set the pickaxe's src image to the baguette
-  pickaxe.src = "./assets/steelpick.png";
-  pickaxe.style="height:125px"
-  pickaxe.style.animationDuration = "2.7s";
-  Cookies.set("activepick","pickaxe")
-  //clear the interval, idk what the interval is for rn 
-  clearInterval(window.g); 
-  ore.innerHTML="<img src='./assets/coal1.png' height='160px'>";
-  Mousetrap.bind('space', function(){
-        money += 50000;
-        plusamt.innerHTML = "+<img src='./assets/catcoin1.png' height='15px'>80k";
-        pickaxe.style.animation = 'none';
-        pickaxe.offsetHeight; /* trigger reflow */
-        pickaxe.style.animation = null; 
-        pickaxe.style.animationPlayState="running"
-        ms1.play();
-},'keyup');
-} 
-if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
- alert("you are using mobile.  As of right now, Cat Miner is in BETA. when the full game releases, there will be a mobile app.")
+function del_data(){
+ //oh no the autosave its broken
+    clearInterval(saveInterval)
+    localStorage.clear()
+    window.location.reload();
 }
