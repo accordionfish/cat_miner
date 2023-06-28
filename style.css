@@ -21,6 +21,7 @@ h1 {
     width:190px;    
 }
 body {
+    position:absolute;
     background:url(./game/assets/bg.png);
     animation: marquee 30s infinite linear;
     background-repeat: repeat;
