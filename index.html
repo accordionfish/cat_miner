@@ -12,11 +12,8 @@
 </head>
 <body>
     <h1>Cat Miner</h1>
-    <script>var converter = new showdown.Converter();
-	var md = '# IMPORTANT ANNOUNCEMENT!!! ## Slowed development(like really slow) > I am taking a break from all cat miner development, and no more updates will happen for a while. ## WHY?!?! WHY TALL KYLE WHY?? > The reasoning is that.. I am not really happy with how cat miner\'s code is right now, and it is hard to add new features sometimes. > I want to take this time to get better at coding, and possibly rewrite all of the code. I still will keep the same logic, but I am not going to update for a while.  # 0.3.1 RELEASED! ## Changes: > - Changed the source images of all the pickaxes > - Added Jonathan mode, and the Steel Pickaxe, and the Pickaxe pickaxe. > - changed non-unlocked pickaxes to be displayed, but not shown what the pickaxe is.';
-	var html = converter.makeHtml(md);</script>
-    <button type="button" class="nes-btn is-primary" id="btn1" onclick="window.location.href='./game/'">Start Game</button>
-    <button type="button" class="nes-btn is-secondary" id="btn2" onclick="Cookies.remove('activepick');Cookies.remove('money');Cookies.remove('modal1alrshown');Cookies.remove('modal2alrshown');Cookies.remove('modal3alrshown');Cookies.remove('travelTicket')">Delete save</button>
+	<h3>Try the new Cat Miner beta!<button onclick="location.href='https://catminer.glitch.me/'"></button></h3>
+	<button onclick="location.href='./game/'">No thanks, just take me to the old release</button><button onclick="localStorage.clear()">delete old release data</button>
     <div id="news"></div>
 </body>
 </html>
