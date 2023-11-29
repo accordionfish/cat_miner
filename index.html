@@ -1,19 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js" integrity="sha512-LhccdVNGe2QMEfI3x4DVV3ckMRe36TfydKss6mJpdHjNFiV07dFpS2xzeZedptKZrwxfICJpez09iNioiSZ3hA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
+<head>
     <link rel="stylesheet" href="style.css">
-    <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" />
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="Cat Miner is a game about collecting pickaxes in different places and mining the ores that are there. ">
+  
+	<meta name="description" content="Cat Miner is a game about collecting pickaxes in different locations and mining for catcoins. ">
     <title>Cat Miner</title>
 </head>
 <body>
-    <h1>Cat Miner</h1><br>
-	<h3>Try the new Cat Miner beta!<button onclick="location.href='https://catminer.glitch.me/'">click here</button></h3>
-	<button onclick="location.href='./game/'">No thanks, just take me to the old release</button><button onclick="localStorage.clear()">delete old release data</button>
-    <div id="news"></div>
+    <div id="logo-ctr">
+            <img src="./game/assets/cmlogo.png" alt="Cat Miner Logo" id="logo">
+    </div>
+    <div id="menu">
+        <button id="btn1" onclick="play()">Play Game</button><br />
+        <button id="btn2" onclick="reset()">Reset Save</button>
+    </div>
+    <script>
+        function play(){
+            location.href="https://catminer.glitch.me/"
+        }
+        function reset(){
+            if(prompt("are you sure you want to delete?\ntype yes to delete save data")  === "yes" | "Yes" | "YEs" | "yEs" | "yeS" | "YES"){
+                var e = window.open("https://catminer.glitch.me/byebyedata.html");
+                setTimeout(() => {
+                    e.close()
+                }, 3000);
+            } else {
+                alert('ok not deleted then')
+            }
+
+        }
+    </script>
 </body>
 </html>
