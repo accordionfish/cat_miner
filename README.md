@@ -1,6 +1,6 @@
 # Update on development
-## no longer slow development, 0.4 is very very close to release.
-> 0.4 is coming soon to a website near you!
+## i forgor to mention but the hiatus is done
+yeah i will do stuff
 ## oh cool so youre better at coding?
 >  yep, there will be minimal glitches(in 0.4) and NEW MUSIC!!! yey
 >  I finished a JS course; So I am very confident about 0.4.
