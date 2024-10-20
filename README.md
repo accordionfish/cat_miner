@@ -1,4 +1,5 @@
 # Update on development
+i am good at coding now so yeah
 ## i forgor to mention but the hiatus is done
 yeah i will do stuff
 ## oh cool so youre better at coding?
