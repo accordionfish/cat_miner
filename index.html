@@ -1,34 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="style.css">
-  
-	<meta name="description" content="Cat Miner is a game about collecting pickaxes in different locations and mining for catcoins. ">
+    <link rel="stylesheet" href="./home.css">
     <title>Cat Miner</title>
 </head>
 <body>
-    <div id="logo-ctr">
-            <img src="./game/assets/cmlogo.png" alt="Cat Miner Logo" id="logo">
+    <div id="wefw">
+    <img src="./assets/cmlogo.png" id="logo" height="100px">
     </div>
-    <div id="menu">
-        <button id="btn1" onclick="play()">Play Game</button><br />
-        <button id="btn2" onclick="reset()">Reset Save</button>
+    <div id="news">
+        <h1>0.4.6 coming soon!</h1>
+        - Bug fixes and general game improvements
+        <br><br>- Music will be added, and backgrounds finalized    
+    <br><br>- This list will be updated with future improvements
+</div>
+    <div id="buttons">
+        <button id="play" onclick="location.href='./game/';">Play</button>
+        <br>
+        <button id="options" onclick="/* oh no the autosave its broken */ localStorage.clear(); alert('save reset!');window.location.reload();" style="font-size:x-large">Reset Save</button>
     </div>
-    <script>
-        function play(){
-            location.href="https://catminer.glitch.me/"
-        }
-        function reset(){
-            if(prompt("are you sure you want to delete?\ntype yes to delete save data")  === "yes" | "Yes" | "YEs" | "yEs" | "yeS" | "YES"){
-                var e = window.open("https://catminer.glitch.me/byebyedata.html");
-                setTimeout(() => {
-                    e.close()
-                }, 3000);
-            } else {
-                alert('ok not deleted then')
-            }
-
-        }
-    </script>
 </body>
 </html>
