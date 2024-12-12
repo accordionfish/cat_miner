@@ -22,28 +22,55 @@ body {
 }
 #pick {
     position:absolute;
-    top:23%;
+    top:24%;
     left:220px;
     animation: swing 1s;
     transform-origin: 0 0;
+    height:128px;
+    transform-origin: bottom left;
+    
 }
-#ore {
+#ore-src {
     position:absolute;
     height:25vh;
-    left:220px;
-    top:40vh;
+    left:18vw;
+    top:41vh;
     z-index:-1;
 }
+#ore-src:active {
+    scale:0.9;
+}
+#ore-src:hover {
+    cursor:pointer;
+}
 #catcoins {
+    position:relative;
     margin:15px;
     color:white;
+    background:rgba(67, 67, 67, 0.3);
     font-family:Archivo;
+    width:fit-content;
+    padding:3px;
+    border-radius: 5px;
+    z-index:13;
+    text-shadow: black 0.1em 0.1em;
+}
+#pickInfo {
+    position:absolute;
+    margin-left:5vw;
+    margin-top:35vh;
+    width:10vw;
+    font-family: Noto Sans;
+    border: 1px black solid;
+    border-radius:2px;
+    background: rgba(67, 67, 67, 0.3);
+    padding:0.5rem;
+
 }
 @keyframes swing {
     0% {
       transform: rotate(70deg);
-      left:350px;
-      top:32%;
+      top:22%;
     }
     100% {
       transform: rotate(0deg);
@@ -53,8 +80,9 @@ body {
     border:none;
     box-shadow: 0 3px white;
     border-radius: 5px;
-    background:#01579B;
+    background: linear-gradient(270deg, rgba(1,87,155,1) 0%, rgba(0,109,196,1) 50%, rgba(111,231,255,1) 100%);
     color:white;
+    text-shadow: 2px 2px 8px #000000;
     font-size: large;
     font-family: "Noto Sans";
     position:absolute;
@@ -63,7 +91,25 @@ body {
     margin:30px;
     width:100px;
     height:50px;
+    z-index:10;
 
+}
+#event {
+    border:none;
+    box-shadow: 0 3px white;
+    border-radius: 5px;
+    background: linear-gradient(270deg, rgba(1,87,155,1) 0%, rgba(0,109,196,1) 50%, rgba(111,231,255,1) 100%);
+    color:white;
+    text-shadow: 2px 2px 8px #000000;
+    font-size: large;
+    font-family: "Noto Sans";
+    position:absolute;
+    right:30vw;
+    top:0;
+    margin:30px;
+    width:100px;
+    height:50px;
+    z-index:10;
 }
 #shop:focus {
     outline:none;
@@ -73,17 +119,26 @@ body {
     transform: translateY(4px);
 
 }
+#event:active {
+    box-shadow: 0 2px white;
+    transform: translateY(4px);
+
+}
 #shop:hover {
-    background: #0288D1;    
+        background: linear-gradient(270deg, rgba(1,150,200,1) 0%, rgba(0,150,250,1) 50%, rgba(111,255,255,1) 100%);
+}
+
+#event:hover {
+    background: linear-gradient(270deg, rgba(1,150,200,1) 0%, rgba(0,150,250,1) 50%, rgba(111,255,255,1) 100%);
 }
 #shop_ctr {
-    border-radius: 10px;
     position: absolute;
     background:white;  
-    height:99vh;
-    width:99vw;
+    height:100vh;
+    width:100vw;
     top:0;
-    z-index:5;
+    left:0;
+    z-index:11;
     background:#FB8C00;
     background-size: 1200px;
     background-position-x: 15px;
@@ -98,9 +153,12 @@ body {
     place-items: center;
 }
 #mrloaf {
-    height:500px;
+    height:60vh;
+    width:33vw;
     position: fixed;
     right:0; 
+    margin-top:15vh;
+    animation: mrloaf_idle 2.5s linear infinite;
 }
 
 #shopsign {
@@ -153,16 +211,22 @@ body {
     text-align: center;
     display: none;
 }
-
+#ac1:hover {
+  background:#435963;
+}
+#ac2:hover {
+  background:#435963;
+  
+}
 
 #loader {
     top:0;
     left:0;
     position: absolute;
     width:100vw;
-    height:99vh;
+    height:100vh;
     background:black;
-    z-index: 11;
+    z-index: 99;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -183,13 +247,21 @@ animation: spin2 2s;
     margin-left:10vw;
     top: 2.5vh;
     display: flex;
-    gap: 5vw;
+    gap: 6vw;
+}
+.pick_rack_pick {
+    height:128px;
+    image-rendering: pixelated;
+}
+/* for debug */
+#activeboost {
+    color:white;
 }
 #shelf {
     top:20vh;
     position:absolute;
-    margin:10px;
-    width:850px;
+    margin:1.5vw;
+    width:65vw;
     height:5vh;
     background:#f5b668;
 }
@@ -200,7 +272,7 @@ animation: spin2 2s;
     width:90vw;
     height:20vh;
     position: absolute;
-    bottom:50px;
+    bottom:30px;
     margin:50px;
     justify-content: center;
     align-items: center;
@@ -238,8 +310,9 @@ animation: spin2 2s;
     border:none;
     box-shadow: 0 3px white;
     border-radius: 5px;
-    background:#01579B;
+    background: linear-gradient(270deg, rgba(1,87,155,1) 0%, rgba(0,109,196,1) 50%, rgba(111,231,255,1) 100%);
     color:white;
+    text-shadow: 2px 2px 8px #000000;
     font-size: large;
     font-family: "Noto Sans";
     position:absolute;
@@ -248,6 +321,8 @@ animation: spin2 2s;
     margin:30px;
     width:100px;
     height:50px;
+    z-index:10;
+
 }
 #travel:hover {
     background: #0288D1;    
@@ -312,7 +387,8 @@ noscript {
 #place-img {
     height:50vh;
     width:100vw;
-    background-repeat: repeat;
+    background-repeat: round;
+    background-size:auto;
 }
 #exit {
     position:absolute;
@@ -324,22 +400,122 @@ noscript {
     color:white;
     font-size:50px;
 }
+#exit:hover {
+    cursor:pointer;
+}
 #airport {
     top:0;
     left:0;
     position: absolute;
-    z-index: 16;
+    z-index: 11;
     height:100%;
     width:100%; 
     
 }
-#pilot {
-    z-index:16;
+#flight {
+  display:none;
+  position:absolute;
+  z-index:17;
+  left:52vw;
+  top:25%;
+  font-family:Archivo;
+  
+}
+#close:hover {
+    cursor:pointer;
+}
+#close {
+    width:min-content;
+    margin:1vw;
+}
+#toggle_bkry {
     position: absolute;
-    height:100px;
-    top:35vh;
-    left:70%;
-
+    right:0;bottom:0;
+    width:590px;
+    height:300px;
+}
+#vername {
+    position: absolute;
+    bottom:0;
+    left:0;
+    color:white;
+}
+#news {
+    position: absolute;
+    bottom:0;
+    right:0;
+    color:white;
+    text-shadow: black 0.1em 0.1em;
+}
+#vername {
+   text-shadow: black 0.1em 0.1em;
+}
+#shop2_ctr {
+    position: absolute;
+    background:white;  
+    height:100vh;
+    width:100vw;
+    top:0;
+    left:0;
+    z-index:11;
+    background:#a8a39d;
+    background-size: 1200px;
+    background-position-x: 15px;
+    background-position-y: 80px;
+    display: none;
+    animation-name:rollIn;
+    animation-duration: 0.4s;
+}
+#shop2 {
+    border:none;
+    box-shadow: 0 3px white;
+    border-radius: 5px;
+    background: linear-gradient(270deg, rgba(1,87,155,1) 0%, rgba(0,109,196,1) 50%, rgba(111,231,255,1) 100%);
+    color:white;
+    text-shadow: 2px 2px 8px #000000;
+    font-size: large;
+    font-family: "Noto Sans";
+    position:absolute;
+    right:20vw;
+    top:0;
+    margin:30px;
+    width:100px;
+    height:50px;
+    z-index:10;
+    
+}
+#shop2:hover {
+    background: #0288D1;    
+    
+}
+#shop2:active {
+    box-shadow: 0 2px white;
+    transform: translateY(4px);   
+}
+#sm {
+    position:absolute;
+    right:0;
+    margin:50px;
+    height:400px;
+}
+#sign2 {
+  position:absolute;  
+  height:100px;
+  right:0;
+  top:0;
+  margin-right:20px;
+}
+#boost-shelves {
+    position: absolute;
+    margin-left:10vw;
+    top: 2.5vh;
+    display: grid;
+    grid-gap: 2vh;
+}
+#left, #right, #left2, #right2 {
+    border:none;
+    background:rgb(164, 163, 172);
+    height:10vh
 }
 
 @keyframes spin2 {
@@ -376,5 +552,34 @@ display: none;
         transform: rotateY(0deg);
         
     }
+    
+}
+#plus {
+    position:absolute;
+    top:45%;
+    left:25%;
+    color:white;
+    font-family: "Noto Sans";
+}
+#particles-js {
+    position:absolute;
+    top:0;
+    height:99%;
+    z-index: 4;
+}
+#cat-cosmetics {
+    position:absolute;
+    /* this really sucks but for a lazy christmas update its good ig*/
+    margin: 5vw 2vh 5vw;
+    height:15vh;
+    z-index:3;
+    transform:scaleX(-1);
+}   
+@keyframes mrloaf_idle {
+    0% {height:60vh;margin-top:15vh;}
+    48% {height:60vh;margin-top:15vh;}
+    50% {height:50vh;margin-top:25vh;}
+    98% {height:50vh;margin-top:25vh;}
+    100% {height:60vh;margin-top:15vh;}
     
 }

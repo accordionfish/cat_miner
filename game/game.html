@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <!-- welcome to the cat miner code, if you're trying to turn the cat into a dog or change the ore to obamium, don't worry. Cat miner studio (once you beat the game) will exist wj-->
+    <!-- yes i was too lazy to do this stuff myself so I added cdns for them-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+  <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script> 
+    <script src="https://unpkg.com/micromodal/dist/micromodal.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mousetrap/1.6.5/mousetrap.min.js" integrity="sha512-+Jg3Ynmj9hse704K48H6rBBI3jdNBjReRGBCxUWFfOz3yVurnJFWtAWssDAsGtzWYw89xFWPxShuj2T6E9EOpg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="shortcut icon" href="https://catminer-reltest.vercel.app/game/favicon.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Cat Miner</title>
+</head>
+<body ondrag="(e) => {e.preventDefault()}">
+    <div id="loader"><img src="https://catminer-reltest.vercel.app/game/assets/pick_icon.png" id="spin"></div>
+    <div id="dialog"><div id="person">Mr. Loaf</div><div id="line">Welcome to my shop! I sell pickaxes.</div><div id="action"></div><div id="options"> <span id="ac1">yes</span><br><span id="ac2">no</span></div></div>
+    <noscript>This game relies on Javascript to run. turn it on now!!!!1!!!!! pls do it or game will be useless and my life's work will be wiufgweigfewubeyrwbey</noscript>
+    <img src="https://catminer-reltest.vercel.app/game/assets/cmlogo.png" alt="logo" id="logo">
+    <div id="catcoins"></div>
+<!--    <div id="activeboost"></div> -->
+    <div id="mine-container">
+        <img src="" id="cat-cosmetics" hidden="true">
+        <img id="cat" src="https://catminer-reltest.vercel.app/game/assets/cat1.png"/>
+        <img  id="pick">
+    </div>
+    <div id="ore"><span id="plus"></span><img id="ore-src"></div>
+    <button id="travel"><img src="https://catminer-reltest.vercel.app/game/assets/travelicon.png" height="25px" style="vertical-align:middle;"> Travel</button>
+    <div id="trvl-menu">
+        <img id="airport" hidden>
+        <div id="flight">
+        </div>
+        <div id="place"></div>
+        <button id="minigame" title="No minigames finished yet, minigames will come after 10 places are added."><img id="mini_img" class="mini-img"><br>Play Minigame<br></button>
+        <button id="visit"><img height="100px" src="https://catminer-reltest.vercel.app/game/assets/airport_1.JPEG"><br>Visit Airport</button>
+        <div id="place-img"></div>
+        <button id="exit" onclick="hide('trvl-menu')">&times;</button>
+            
+    </div>
+    <button id="shop"><img src="https://catminer-reltest.vercel.app/game/assets/pick_icon.png" height="20px" >&nbsp;&nbsp;Shop</button>
+    <div id="shop_ctr_ctr">
+    <div id="shop_ctr">
+        <div id="pickInfo"></div>
+        <button onclick="document.querySelector('#shop_ctr').style.display='none';hide('dialog');hide('options');cc_el.style.marginTop = '15px'" style="border:none;color:black;background:none;font-size:50px;" id="close">&times;</button>
+        <img src="https://catminer-reltest.vercel.app/game/assets/sign.png" alt="" id="shopsign">
+        <img src="assets/mrloaf.png" alt="" id="mrloaf">
+        <div id="pickaxe-rack">
+        <button id="left" onclick="left()">◀</button>
+        <img id="pick1" onclick="viewPick(i + 1)"
+                         style="cursor:pointer;" class="pick_rack_pick"/>
+        <img id="pick2" onclick="viewPick(i + 2)" class="pick_rack_pick"/>
+        <img id="pick3" onclick="viewPick(i + 3)" class="pick_rack_pick"/>
+        <img id="pick4" onclick="viewPick(i + 4)" class="pick_rack_pick"/>
+        <button id="right" onclick="right()">▶</button>
+        <br>
+        <div id="shelf"></div>
+    </div>
+        <img id="shop-pick">
+        <span id="pickname"></span>
+        <button id="buy" onclick="buyPick(pickaxes[pickaxes.indexOf(localStorage.getItem('activepick')) + 1])">BUY</button>
+    </div>
+    </div>
+    <button id="shop2">
+        <span class="material-icons" style="vertical-align:middle">bolt</span>Boosts
+    </button>
+    <button id="event"><span class="material-icons" style="vertical-align:middle">event</span>&nbsp;Event</button>
+    <div id="shop2_ctr">
+
+        <div id="close" onclick="hide('shop2_ctr');hide('dialog')" style="font-size:50px;font-weight:900;">&times;</div>
+        <img src="https://catminer-reltest.vercel.app/game/assets/sign2.png" id="sign2">
+        <img src="https://catminer-reltest.vercel.app/game/assets/speedymetal.png" id="sm">
+        <div id="boost-shelves">
+            <button onclick="left()" id="right2">▲</button>
+            <img id="boost1" onclick="viewBoost(w)" class="pick_rack_pick"/>
+            <img id="boost2" onclick="viewBoost(w + 1)" class="pick_rack_pick"/>
+            <img id="boost3" onclick="viewBoost(w + 2)" class="pick_rack_pick"/>
+            <button onclick="right()" id="left2">▼</button>
+    
+        </div>
+        
+    </div>
+    <div id="cats">
+        <span class=""></span>
+    </div>
+    <div id="vername" style="font-family: Archivo;">Cat Miner 0.4.6 (beta)</div>
+    <div id="news" style="font-family:Archivo"><marquee>NEWS: redesigns coming soon, code will be faster and more optimized</marquee></div>
+    <div id="particles-js"></div>
+
+    <script src="./script.js"></script>
+</body>
+</html>

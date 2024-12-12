@@ -1,69 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-  />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
-
-    <script src="https://unpkg.com/micromodal/dist/micromodal.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mousetrap/1.6.5/mousetrap.min.js" integrity="sha512-+Jg3Ynmj9hse704K48H6rBBI3jdNBjReRGBCxUWFfOz3yVurnJFWtAWssDAsGtzWYw89xFWPxShuj2T6E9EOpg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="./home.css">
     <title>Cat Miner</title>
 </head>
-<body ondrag="(e) => {e.preventDefault()}">
-    <div id="loader"><img src="./assets/pick_icon.png" id="spin"></div>
-    <div id="dialog"><div id="person">Mr. Loaf</div><div id="line">Welcome to my shop! I sell pickaxes.</div><div id="action"></div><div id="options"> <span id="ac1">yes</span><br><span id="ac2">no</span></div></div>
-    <noscript>This game relies on Javascript to run. turn it on now!!!!1!!!!! pls do it or game will be useless and my life's work will be wiufgweigfewubeyrwbey</noscript>
-    <img src="./assets/cmlogo.png" alt="logo" id="logo">
-    <div id="catcoins"></div>
-    <div id="mine-container">
-        <img id="cat" src="./assets/cat1.png"/>
-        <img src="" id="pick">
-        <img src="" alt="" id="ore">
+<body>
+    <div id="wefw">
+    <img src="./assets/cmlogo.png" id="logo" height="100px">
     </div>
-    <div id="ore"><img src=""  id="ore-src"></div>
-    <button id="travel"><img src="./assets/travelicon.png" height="25px" style="vertical-align:middle;"> Travel</button>
-    <div id="trvl-menu">
-        <img id="airport" src="" hidden>
-        <div id="e">
-        <img id="pilot">
-        </div>
-        <div id="place"></div>
-        <button id="minigame"><img id="mini_img" class="mini-img"><br>Play Minigame</button>
-        <button id="visit"><img height="100vh" src="./assets/airport_1.JPEG"><br>Visit Airport</button>
-        <div id="place-img"></div>
-        <button id="exit" onclick="hide('trvl-menu')">&times;</button>
-            
-    </div>
-    <button id="shop"><img src="./assets/pick_icon.png" height="20px" >&nbsp;&nbsp;Shop</button>
-    <div id="shop_ctr_ctr">
-    <div id="shop_ctr">
-        
-        <button onclick="document.querySelector('#shop_ctr').style.display='none';hide('dialog');hide('options')" style="border:none;color:black;background:none;font-size:50px;">&times;</button>
-        <img src="./assets/sign.png" alt="" id="shopsign">
-        <img src="./assets/mrloaf.png" alt="" id="mrloaf">
-        <div id="pickaxe-rack">
-        <button id="left" onclick="left()">◀</button>
-        <img id="pick1" onclick="viewPick(i + 1)" style="cursor:pointer;"/>
-        <img id="pick2" onclick="viewPick(i + 2)"/>
-        <img id="pick3" onclick="viewPick(i + 3)"/>
-        <img id="pick4" onclick="viewPick(i + 4)"/>
-        <button id="right" onclick="right()">▶</button>
-
+    <div id="news">
+        <h1>0.4.6 beta is out!</h1>
+        - Bug fixes and general game improvements
+        <br><br>- Music will be added soon, and backgrounds finalized    
+    <br><br>- This list will be updated with future improvements
+    <!--<br><br>- New (ish) design for Mr. Loaf (RIP Mr. Loaf V1) -->
+    <br><br>- Helper cats
+    <br><br>- Boosts will be fixed soon (with an active boost menu)
+    <br><br> Thanks for playing! -Kyle
+</div>
+    <div id="buttons">
+        <button id="play" onclick="location.href='./game.html';">Play</button>
         <br>
-        <div id="shelf"></div>
+        <button id="options" onclick="/* oh no the autosave its broken */ localStorage.clear(); alert('save reset!');window.location.reload();" style="font-size:x-large">Reset Save</button>
     </div>
-        <img src="" id="shop-pick">
-        <span id="pickname"></span>
-        <button id="buy" onclick='buyPick(pickaxes[pickaxes.indexOf(localStorage.getItem("activepick")) + 1])'>BUY</button>
-    </div>
-    </div>
-    <script src="./script.js"></script>
 </body>
 </html>
