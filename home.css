@@ -20,6 +20,7 @@
   padding:5px;
   font-family:"Golos Text";
   background:#FFFF;
+
 }
 #buttons {
   display: flex;
@@ -41,7 +42,7 @@ button   {
 }
 body {
   margin:0;
-    background:url(./game/assets/bg.png);
+    background:url(./assets/bg.png);
     animation: marquee 35s infinite linear;
     background-repeat: repeat;
     background-size:100px;
