@@ -570,7 +570,7 @@ display: none;
 #cat-cosmetics {
     position:absolute;
     /* this really sucks but for a lazy christmas update its good ig*/
-    margin: 5%  5% 0% 0%;
+    margin: 2.5%  2.5% 0% 0%;
     height:15vh;
     z-index:3;
     transform:scaleX(-1);
